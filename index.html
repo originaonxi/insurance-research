@@ -222,6 +222,1114 @@ nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-f
 .btn-cmp.selected{background:var(--blue-bg);border-color:var(--blue);color:var(--blue)}
 .btn-cmp:hover:not(.selected){border-color:var(--blue);color:var(--blue)}
 
+/* WAITING PERIOD BLOCK */
+.wp-block{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 0;margin:4px 0 8px}
+.wp-label{font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-right:4px}
+.wp-pill{background:#fef9c3;color:#92400e;border-radius:20px;padding:3px 10px;font-size:12px;border:1px solid #fde68a}
+.wp-red{background:#fef2f2;color:#dc2626;border-color:#fecaca}
+.wp-orange{background:#fff7ed;color:#c2410c;border-color:#fed7aa}
+
+/* DENIAL WATCH */
+.denial-hd{color:#dc2626!important}
+.tc-deny{background:#fef2f2;border-radius:6px;padding:6px 8px;margin-bottom:4px;border-left:3px solid #dc2626}
+.tc-deny .tc-icon{color:#dc2626;font-weight:900;font-size:13px;min-width:16px;text-align:center}
+.tc-good .tc-icon{color:#059669;font-weight:900;font-size:13px}
+.tc-ask .tc-icon{color:#2563eb;font-weight:900;font-size:13px}
+
+/* CARD ACTIONS */
+.btn-review{font-size:12px;padding:8px 12px}
+
+/* COMPARE TABLE IMPROVEMENTS */
+.compare-table td{font-size:13px;vertical-align:top;padding:12px 14px;border-bottom:1px solid #f1f5f9;line-height:1.5}
+.compare-table thead th{background:#f8fafc;font-size:13px;padding:14px;border-bottom:2px solid #e2e8f0}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:hover td{background:#f8fafc}
+
+/* MODAL CLOSE */
+.modal-close{background:none;border:none;cursor:pointer;color:#94a3b8;font-size:20px;padding:4px 8px;border-radius:6px;line-height:1}
+.modal-close:hover{color:#0f172a;background:#f1f5f9}
+
+/* COMPARE MODAL */
+.compare-modal{max-width:960px}
+.compare-modal .modal-head{padding:20px 24px 0;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9;padding-bottom:16px;margin-bottom:0}
+
+
+/* COMPARE BAR */
+.compare-bar{position:fixed;bottom:0;left:0;right:0;z-index:60;
+  background:#1e293b;padding:16px 32px;display:flex;align-items:center;gap:16px;
+  transform:translateY(100%);transition:transform .25s;border-top:1px solid #334155}
+.compare-bar.show{transform:translateY(0)}
+.cbar-items{display:flex;gap:10px;flex:1}
+.cbar-item{background:#334155;border-radius:8px;padding:6px 12px;font-size:13px;color:#e2e8f0;
+  display:flex;align-items:center;gap:8px}
+.cbar-item button{background:none;border:none;color:#94a3b8;cursor:pointer;font-size:15px;line-height:1}
+.cbar-item button:hover{color:#f87171}
+.cbar-slot{background:#1e293b;border:1.5px dashed #334155;border-radius:8px;
+  padding:6px 20px;font-size:12px;color:#475569}
+.btn-compare-now{background:var(--blue);color:#fff;padding:10px 20px;border-radius:10px;
+  border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
+.btn-compare-now:disabled{opacity:.5;cursor:default}
+.cbar-clear{color:#64748b;background:none;border:none;cursor:pointer;font-size:12px;padding:8px}
+
+/* MODALS */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:70;
+  align-items:center;justify-content:center;padding:20px}
+.modal-bg.open{display:flex}
+.modal{background:#fff;border-radius:20px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg)}
+
+/* REVIEW MODAL */
+.review-modal{max-width:480px}
+.modal-head{padding:24px 24px 0;display:flex;justify-content:space-between;align-items:flex-start}
+.modal-head h2{font-size:20px;font-weight:800;letter-spacing:-.3px}
+.modal-close{background:none;border:none;cursor:pointer;font-size:20px;color:var(--muted);
+  width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:var(--surface);color:var(--text)}
+.modal-body{padding:20px 24px 24px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+.form-group .hint{font-size:11px;color:var(--muted);margin-bottom:6px}
+.form-input{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:9px;
+  font-size:14px;font-family:inherit;outline:none;transition:border-color .15s}
+.form-input:focus{border-color:var(--blue)}
+textarea.form-input{resize:vertical;min-height:90px}
+.star-select{display:flex;gap:6px;margin-top:4px}
+.star-select .s{font-size:28px;cursor:pointer;transition:transform .1s}
+.star-select .s:hover{transform:scale(1.2)}
+.star-select .s.on{color:#f59e0b}
+.star-select .s.off{color:#e2e8f0}
+.outcome-btns{display:flex;gap:8px;flex-wrap:wrap}
+.outcome-btn{padding:7px 14px;border-radius:8px;border:1.5px solid var(--border);
+  font-size:12px;font-weight:600;cursor:pointer;background:#fff;font-family:inherit;transition:all .12s}
+.outcome-btn.on{background:var(--blue-bg);border-color:var(--blue);color:var(--blue)}
+.verified-note{background:var(--blue-bg);border:1px solid var(--blue-light);border-radius:10px;
+  padding:12px;font-size:12px;color:var(--sub);line-height:1.6;margin-bottom:16px}
+.verified-note strong{color:var(--blue)}
+.btn-submit{width:100%;padding:12px;background:var(--blue);color:#fff;border:none;
+  border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
+.btn-submit:hover{background:#1d4ed8}
+
+/* COMPARE MODAL */
+.compare-modal{max-width:900px}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px}
+.compare-table th{background:var(--surface);padding:12px 16px;text-align:left;
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
+.compare-table td{padding:12px 16px;border-top:1px solid var(--border);vertical-align:top}
+.compare-table tr:hover td{background:#fafafa}
+.compare-table .row-label{font-weight:600;color:var(--text);white-space:nowrap;width:160px}
+.ct-good{color:var(--green);font-weight:600}
+.ct-bad{color:var(--red);font-weight:600}
+.ct-warn{color:var(--yellow);font-weight:600}
+.cmp-hdr{padding:20px 24px 0;display:flex;justify-content:space-between;align-items:center}
+.cmp-hdr h2{font-size:20px;font-weight:800}
+.cmp-names{display:grid;grid-template-columns:160px repeat(auto-fill,1fr);background:var(--blue);color:#fff;border-radius:12px 12px 0 0}
+.cmp-name-cell{padding:14px 16px}
+.cmp-name-cell h3{font-size:14px;font-weight:700;line-height:1.3}
+.cmp-name-cell p{font-size:11px;opacity:.8;margin-top:2px}
+.cmp-score{font-size:26px;font-weight:900;margin-top:4px}
+
+/* NO RESULTS */
+.no-res{text-align:center;padding:80px 32px;color:var(--muted)}
+.no-res p{font-size:15px}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;margin-bottom:32px}
+.footer-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  color:var(--sub);margin-bottom:12px}
+.footer-col ul{list-style:none}
+.footer-col ul li{font-size:13px;color:var(--muted);padding:3px 0;line-height:1.6}
+.footer-col ul li strong{color:var(--sub)}
+.footer-bottom{font-size:12px;color:var(--muted);border-top:1px solid var(--border);
+  padding-top:20px;line-height:1.8}
+
+@media(max-width:640px){
+  nav{padding:0 16px;gap:10px}
+  .nav-cats{display:none}
+  .hero{padding:40px 16px 28px}
+  .filters{padding:10px 16px}
+  .grid-wrap{padding:16px 16px 100px}
+  .grid{grid-template-columns:1fr}
+  .mvr-row{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr}
+  .compare-bar{padding:12px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Pol<span class="dot">truth</span></div>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" placeholder="Search policies or insurers..." id="search">
+  </div>
+  <div class="nav-cats">
+    <button class="nav-cat on" data-cat="all">All</button>
+    <button class="nav-cat" data-cat="health">Health</button>
+    <button class="nav-cat" data-cat="life">Life</button>
+    <button class="nav-cat" data-cat="auto">Auto</button>
+  </div>
+  <button class="nav-compare" id="compare-btn">
+    Compare <span class="compare-badge" id="compare-count">0</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-chip">
+    ✓ No broker · No commission · Policy document only
+  </div>
+  <h1>India's insurance truth.<br>Not the <span class="accent">ad</span>.</h1>
+  <p>We read every policy document so you don't have to. See what's actually covered, what gets rejected at claim time, and how each insurer actually performs.</p>
+  <div class="trust-bar">
+    <span class="trust-item"><span class="dot"></span><strong id="h-total">259</strong> policies analyzed</span>
+    <span class="trust-item"><span class="dot"></span><strong>29</strong> IRDAI-registered insurers</span>
+    <span class="trust-item"><span class="dot"></span>Direct PDF links from insurer websites</span>
+    <span class="trust-item"><span class="dot"></span>Buy direct. Zero commission.</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how">
+  <div class="how-inner">
+    <div class="how-title">How Poltruth works</div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="icon" style="background:#eff6ff">📄</div>
+        <h3>We read the policy PDF</h3>
+        <p>Every policy document is scraped directly from the insurer's official website. That 80-page document nobody reads? We read it.</p>
+      </div>
+      <div class="how-step">
+        <div class="icon" style="background:#f0fdf4">🔍</div>
+        <h3>We find what actually matters</h3>
+        <p>What's covered, what's rejected, waiting periods, sub-limits, co-pay clauses — the 10 things that decide your claim outcome.</p>
+      </div>
+      <div class="how-step">
+        <div class="icon" style="background:#fef9c3">⚡</div>
+        <h3>You decide. Buy direct.</h3>
+        <p>Compare by real claim rates, not ads. Click Buy Direct — you go straight to the insurer. No middleman. No commission. Exact same price.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MARKETING VS REALITY -->
+<div class="mvr-banner">
+  <div style="padding:32px 0 12px">
+    <div style="font-size:20px;font-weight:800;letter-spacing:-.3px;margin-bottom:4px">Marketing vs Reality</div>
+    <div style="font-size:14px;color:var(--sub)">What insurers advertise vs what the policy document actually says</div>
+  </div>
+  <div class="mvr-card">
+    <div class="mvr-label">⚠ Real examples from policy documents</div>
+    <div class="mvr-title">Health Insurance: What they say vs what you sign</div>
+    <div class="mvr-row">
+      <div class="mvr-side mvr-ad">
+        <h4>📢 Marketing says</h4>
+        <ul class="mvr-items">
+          <li>₹10 Lakh comprehensive coverage</li>
+          <li>Cashless at 10,000+ hospitals</li>
+          <li>Day 1 coverage, no waiting</li>
+          <li>All diseases covered</li>
+        </ul>
+      </div>
+      <div class="mvr-side mvr-truth">
+        <h4>📋 Policy document says</h4>
+        <ul class="mvr-items">
+          <li>₹10L total — but cataract max ₹40K, joint replacement max ₹1.5L (sub-limits)</li>
+          <li>Cashless only at network hospitals. Non-network? You pay, then claim. Takes 30-90 days.</li>
+          <li>30-day waiting period. Pre-existing conditions: 2-4 years. Some diseases: 1-2 years.</li>
+          <li>Exclusions include: self-inflicted, cosmetic, dental, fertility, obesity, AIDS, war, nuclear</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters">
+  <select class="sort-sel" id="sort">
+    <option value="csr">Sort: PolicyScore ↓</option>
+    <option value="complaints">Sort: Fewer Complaints</option>
+    <option value="solvency">Sort: Solvency Ratio</option>
+    <option value="name">Sort: Name A–Z</option>
+  </select>
+  <span class="f-count" id="f-count"></span>
+</div>
+
+<!-- GRID -->
+<div class="grid-wrap">
+  <div class="grid" id="grid"></div>
+  <div class="no-res" id="no-res" style="display:none"><p>No policies found. Try adjusting your search.</p></div>
+</div>
+
+<!-- COMPARE BAR -->
+<div class="compare-bar" id="compare-bar">
+  <div class="cbar-items" id="cbar-items"></div>
+  <button class="btn-compare-now" id="btn-compare-now" onclick="openCompare()">Compare Now →</button>
+  <button class="cbar-clear" onclick="clearCompare()">Clear all</button>
+</div>
+
+<!-- REVIEW MODAL -->
+<div class="modal-bg" id="review-modal-bg" onclick="closeIfBg(event,'review-modal-bg')">
+  <div class="modal review-modal">
+    <div class="modal-head">
+      <div>
+        <h2>Write a Review</h2>
+        <p style="font-size:13px;color:var(--sub);margin-top:4px" id="rm-policy-name"></p>
+      </div>
+      <button class="modal-close" onclick="closeModal('review-modal-bg')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="verified-note">
+        <strong>✓ Verified reviews only.</strong> Enter your policy number (we hash it — never stored in plain text). Only real policyholders can review. This is what makes our reviews real.
+      </div>
+      <div class="form-group">
+        <label>Your policy number (kept private)</label>
+        <div class="hint">We convert this to a hash. Your actual number is never stored.</div>
+        <input class="form-input" type="text" id="rm-polno" placeholder="e.g. 1234567890">
+      </div>
+      <div class="form-group">
+        <label>Overall rating</label>
+        <div class="star-select" id="rm-stars">
+          <span class="s off" data-v="1">★</span>
+          <span class="s off" data-v="2">★</span>
+          <span class="s off" data-v="3">★</span>
+          <span class="s off" data-v="4">★</span>
+          <span class="s off" data-v="5">★</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Did you make a claim?</label>
+        <div class="outcome-btns" id="rm-claim-btns">
+          <button class="outcome-btn" data-v="yes">Yes, I claimed</button>
+          <button class="outcome-btn" data-v="no">Not yet</button>
+        </div>
+      </div>
+      <div id="rm-outcome-wrap" style="display:none">
+        <div class="form-group">
+          <label>What happened?</label>
+          <div class="outcome-btns" id="rm-outcome-btns">
+            <button class="outcome-btn" data-v="approved">✓ Approved fully</button>
+            <button class="outcome-btn" data-v="partial">⚠ Partial</button>
+            <button class="outcome-btn" data-v="rejected">✗ Rejected</button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Your experience <span style="color:var(--muted)">(min 30 chars)</span></label>
+        <textarea class="form-input" id="rm-text" placeholder="What happened when you needed to use this policy? What surprised you — good or bad?"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Your name <span style="color:var(--muted)">(optional)</span></label>
+        <input class="form-input" type="text" id="rm-name" placeholder="Anonymous">
+      </div>
+      <button class="btn-submit" onclick="submitReview()">Submit Verified Review →</button>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE MODAL -->
+<div class="modal-bg" id="compare-modal-bg">
+  <div class="modal compare-modal">
+    <div class="modal-head">
+      <div>
+        <h2 style="font-size:18px;font-weight:800">Side-by-side comparison</h2>
+        <p style="font-size:12px;color:#64748b;margin-top:2px">What actually matters when you claim</p>
+      </div>
+      <button class="modal-close" onclick="closeModal('compare-modal-bg')">✕</button>
+    </div>
+    <div id="compare-content" style="padding:0 24px 24px;overflow-x:auto"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>PolicyScore</h4>
+        <ul>
+          <li><strong>98-100</strong> — Exceptional (pays almost all claims)</li>
+          <li><strong>95-97</strong> — Very Good</li>
+          <li><strong>90-94</strong> — Good</li>
+          <li><strong>Below 90</strong> — Needs scrutiny</li>
+          <li>Source: IRDAI Annual Report 2023-24</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Hidden T&C that matter most</h4>
+        <ul>
+          <li>Room rent sub-limits (health)</li>
+          <li>Co-payment clause (health)</li>
+          <li>Depreciation schedule (auto)</li>
+          <li>Pre-existing disease waiting (health)</li>
+          <li>Claim intimation time window</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our promise</h4>
+        <ul>
+          <li>No broker fees. Ever.</li>
+          <li>No sponsored rankings</li>
+          <li>Only verified buyer reviews</li>
+          <li>Direct links to IRDAI-registered insurers</li>
+          <li>Policy documents updated from insurer sites</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>India first. World next.</h4>
+        <ul>
+          <li>29 IRDAI-registered insurers</li>
+          <li>259 policy documents analyzed</li>
+          <li>Health · Life · Auto · Accident</li>
+          <li>Built for every Indian</li>
+          <li>Free forever for buyers</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Data from IRDAI Annual Report 2023-24. Policy PDFs linked directly from official insurer websites. Poltruth is an information platform — we do not sell insurance. All purchases made directly with IRDAI-registered insurers. Reviews from verified policyholders only.
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── STATE ───────────────────────────────────────────────────────
+let POLICIES = [];
+let cat = 'all', q = '', sort = 'csr';
+let compareSet = new Map(); // id -> policy
+let reviewTarget = null;
+let rmRating = 0, rmClaim = null, rmOutcome = null;
+const REVIEWS = {};
+
+// ─── UTIL ────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+
+function scoreGrade(csr) {
+  if (csr >= 98) return 'a';
+  if (csr >= 95) return 'b';
+  if (csr >= 90) return 'c';
+  return 'd';
+}
+function catLabel(c) {
+  return {health:'Health',life:'Life',auto:'Auto',accident:'Accident'}[c]||c;
+}
+function mClass(v, lo, hi) {
+  return v >= hi ? 'm-good' : v >= lo ? 'm-ok' : 'm-bad';
+}
+function cmpClass(v, lo, hi) {
+  return v >= hi ? 'ct-good' : v >= lo ? '' : 'ct-bad';
+}
+async function sha256(s) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('').slice(0,16);
+}
+
+// ─── WHY CLAIMS GET REJECTED (from real IRDAI complaints + policy T&C) ──────
+const DENIAL_WATCH = {
+  health: [
+    {text:'Hospital not on cashless network → You pay full bill upfront, then fight for reimbursement. Takes 30–90 days. Always verify empanelment before hospitalization.'},
+    {text:'Room rent exceeded the daily cap → You booked a ₹6K room, policy allows ₹3K. Insurer cuts room rent AND applies proportional cuts on doctor fees, ICU, medicines — everything.'},
+    {text:'Pre-existing disease catch → Condition diagnosed before your policy start date is excluded for 2–4 years. Even a condition you didn\'t know about can be labelled pre-existing.'},
+    {text:'Missed 24–48hr claim intimation → Forgot to call insurer before or during hospitalization? Rejected on procedure — not on merit. No exceptions.'},
+    {text:'"Not medically necessary" → Insurer says it was elective, you say emergency. They have in-house doctors who decide. This kills thousands of claims every year.'},
+  ],
+  life: [
+    {text:'Non-disclosure voids the policy → Didn\'t mention blood pressure, diabetes, or smoking in the proposal? Insurer investigates after death and can void the entire policy — even after 10 years of premiums.'},
+    {text:'Suicide within 12 months → Only surrender value is paid (a fraction of sum assured), not the full death benefit. This is in every policy on page 8.'},
+    {text:'Policy lapsed mid-claim → Missed one premium after grace period → zero coverage. Revival requires new medical exam and can be refused.'},
+    {text:'Nominee vs. legal heir conflict → Your nominee collects, but legal heirs can challenge. Wrong nomination setup = your family in court for years instead of getting the money.'},
+    {text:'Non-standard death not covered → Murder investigation, aviation, adventure sports, specific occupations → read the exact list. Most term plans have 15–20 exclusions.'},
+  ],
+  auto: [
+    {text:'Drove into flood → Consequential damage. Engine seized after you drove through waterlogged road = NOT covered. Only damage from water entry before you moved is covered.'},
+    {text:'Policy expired even one day → Accident on day 366 of a lapsed policy = full rejection. Insurers have zero grace on this. Renew before expiry, always.'},
+    {text:'Depreciation hits everything → 3-year-old car: 35% depreciation on parts. You pay ₹35 per ₹100 of parts even in comprehensive insurance. IDV also shrinks every year.'},
+    {text:'NCB loss math → One claim wipes 5 years of No Claim Bonus (20–50% discount). For small repairs under ₹15K, paying from pocket often costs less than losing NCB.'},
+    {text:'Wrong license type → Driver had learner\'s license or license for different vehicle class → full claim rejection. This applies to family members driving your car too.'},
+  ],
+  accident: [
+    {text:'Any suspicion of alcohol → Automatic investigation by insurer. Medical reports, police FIR, witnesses checked. Even one positive marker = rejected. No room for appeal.'},
+    {text:'Disability scale is brutal → Losing one eye = 50% payout. Losing one hand = 50%. You need 80%+ disability to get 100% of sum assured. Read the exact schedule.'},
+    {text:'Job category exclusion → Construction worker, miner, chemical plant worker, fisherman → specific occupation exclusions. Accident at work = no claim for many PA policies.'},
+    {text:'Adventure sports fine print → Trekking, rock climbing, bike racing, water sports → excluded in most PA policies unless you bought a specific rider. Most people don\'t.'},
+    {text:'Reporting window is short → 7 to 30 days to report after accident. Hospitalized, phone dead, family overwhelmed? Doesn\'t matter. Miss the window = procedural rejection.'},
+  ]
+};
+
+// ─── REAL TALK: 3 things to verify before you buy ────────────────────────────
+const REAL_TALK = {
+  health: [
+    'Is YOUR nearest hospital on the cashless network? (check the insurer\'s list)',
+    'What is the exact room rent daily cap? (sub-limits apply to everything, not just room)',
+    'What\'s the co-payment %? (means you pay that % of every single claim, forever)',
+  ],
+  life: [
+    'What happens to my policy if I miss one premium? (grace period + revival conditions)',
+    'Does my nominee know how to file a claim? (documents, process, timeline)',
+    'What are the 5 events that will make this claim rejected? (read exclusions, not the brochure)',
+  ],
+  auto: [
+    'What is the compulsory deductible on every claim? (₹2K–₹5K you always pay first)',
+    'What is my IDV (Insured Declared Value)? (this is the maximum you can ever get)',
+    'What happens to my NCB if I make one claim? (calculate if it\'s worth claiming at all)',
+  ],
+  accident: [
+    'What is the exact % payout for each type of disability? (get the full schedule)',
+    'Does this cover accidents in other countries? (international travel = check carefully)',
+    'What is the exact accident reporting deadline? (7–30 days — set a reminder now)',
+  ],
+};
+
+// ─── RENDER CARD ─────────────────────────────────────────────────
+function isDefinition(s) {
+  if (!s || s.length < 20) return true;
+  const colonIdx = s.indexOf(':');
+  // looks like "Term Name: definition..." — skip these
+  if (colonIdx > 0 && colonIdx < 40 && s.substring(0, colonIdx).trim().split(' ').length <= 5) return true;
+  if (/^(private car|stand alone|liability only|policy wording|add-on cover|prospectus|schedule|the insured|insured person|sum insured)/i.test(s)) return true;
+  return false;
+}
+
+function renderCard(p, reviews) {
+  const g = scoreGrade(p.csr);
+  const csr = p.csr > 0 ? p.csr.toFixed(1)+'%' : '—';
+  const isCmp = compareSet.has(p.id);
+  const pCat = p.category || 'health';
+  const covered = (p.what_is_covered||[]).filter(i => !isDefinition(i)).slice(0, 4);
+  const denials = (DENIAL_WATCH[pCat]||DENIAL_WATCH.health).slice(0, 3);
+  const talk = (REAL_TALK[pCat]||REAL_TALK.health);
+  const wp = p.waiting_periods||{};
+  const rv = reviews || [];
+  const avgR = rv.length ? (rv.reduce((s,r)=>s+r.rating,0)/rv.length).toFixed(1) : null;
+  const buyUrl = getBuyUrl(p.insurer_id);
+  const cpClass = (p.complaints_per_10k||0)<=2?'m-good':(p.complaints_per_10k||0)<=5?'m-ok':'m-bad';
+  const safeId = p.id;
+  const safeName = p.product_name.replace(/'/g,"\\'").replace(/"/g,'&quot;');
+  const safeIns = p.insurer_id;
+
+  return `
+<div class="card" id="card-${p.id}">
+  <div class="card-top">
+    <div class="card-head">
+      <div class="card-left">
+        <span class="card-cat cat-${pCat}">${catLabel(pCat)}</span>
+        <div class="card-name">${p.product_name}</div>
+        <div class="card-insurer">
+          <span class="verified-tick">✓</span> ${p.insurer}
+          ${avgR?`<span style="margin-left:8px;color:#f59e0b;font-weight:700">★ ${avgR}</span><span class="review-count">(${rv.length})</span>`:''}
+        </div>
+      </div>
+      <div class="score-box">
+        <div class="score-ring sg-${g}">
+          <div class="score-num">${p.csr>0?p.csr.toFixed(0):'?'}</div>
+          <div class="score-txt">Score</div>
+        </div>
+        <div class="score-label">PolicyScore</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-val ${p.csr>=95?'m-good':p.csr>=90?'m-ok':'m-bad'}">${csr}</div>
+      <div class="metric-lab">Claims Paid</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">${p.solvency_ratio?p.solvency_ratio.toFixed(2):'—'}</div>
+      <div class="metric-lab">Solvency</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val ${cpClass}">${p.complaints_per_10k||'—'}</div>
+      <div class="metric-lab">Complaints/10k</div>
+    </div>
+  </div>
+
+  <div class="card-body">
+
+    ${covered.length ? `
+    <div class="section-hd">✅ What you actually get</div>
+    <ul class="tc-list">
+      ${covered.map(i=>`<li class="tc-item tc-good"><span class="tc-icon">✓</span>${i.substring(0,100)}</li>`).join('')}
+    </ul>` : ''}
+
+    ${(wp.initial||wp.pre_existing_disease) ? `
+    <div class="wp-block">
+      <span class="wp-label">⏱ Coverage starts</span>
+      ${wp.initial ? `<span class="wp-pill">Initial wait <strong>${wp.initial}</strong></span>` : ''}
+      ${wp.pre_existing_disease ? `<span class="wp-pill wp-red">Pre-existing <strong>${wp.pre_existing_disease}</strong></span>` : ''}
+      ${wp.specific_disease ? `<span class="wp-pill wp-orange">Specific diseases <strong>${wp.specific_disease}</strong></span>` : ''}
+    </div>` : ''}
+
+    <div class="section-hd denial-hd">🚨 How claims get denied — read this</div>
+    <ul class="tc-list">
+      ${denials.map(d=>`<li class="tc-item tc-deny"><span class="tc-icon">!</span>${d}</li>`).join('')}
+    </ul>
+
+    <div class="section-hd">💡 Ask before buying</div>
+    <ul class="tc-list">
+      ${talk.map(t=>`<li class="tc-item tc-ask"><span class="tc-icon">?</span>${t}</li>`).join('')}
+    </ul>
+
+  </div>
+
+  ${rv.slice(0,2).length ? `
+  <div class="reviews-preview">
+    <div class="section-hd" style="padding:0 0 6px">💬 Verified buyer experiences</div>
+    ${rv.slice(0,2).map(r=>`
+    <div class="review-chip">
+      <div class="rc-top">
+        <span class="rc-name">${r.name||'Anonymous'}</span>
+        <span class="stars">${[1,2,3,4,5].map(n=>`<span class="star ${n<=r.rating?'on':'off'}">★</span>`).join('')}</span>
+        ${r.claim_outcome?`<span class="rc-outcome outcome-${r.claim_outcome}">${{approved:'✓ Approved',rejected:'✗ Rejected',partial:'⚠ Partial',not_claimed_yet:'Not claimed yet'}[r.claim_outcome]||r.claim_outcome}</span>`:''}
+        ${r.verified?'<span class="rc-verified">✓ Verified</span>':''}
+      </div>
+      <div class="rc-text">${r.review_text.substring(0,140)}${r.review_text.length>140?'…':''}</div>
+    </div>`).join('')}
+  </div>` : ''}
+
+  <div class="card-actions">
+    <a class="btn btn-pdf" href="${p.pdf_url}" target="_blank" rel="noopener">📄 Policy PDF</a>
+    ${buyUrl ? `<a class="btn btn-buy" href="${buyUrl}" target="_blank" rel="noopener">Buy Direct ↗</a>` : ''}
+    <button class="btn btn-review" onclick="openReview('${safeId}','${safeName}','${safeIns}')" title="Write a review">✏ Review</button>
+    <button class="btn btn-cmp ${isCmp?'selected':''}" onclick="toggleCompare('${safeId}')" data-pid="${safeId}" id="cmpbtn-${safeId}" title="Add to compare">⇄ Compare</button>
+  </div>
+</div>`;
+}
+
+// ─── RENDER GRID ─────────────────────────────────────────────────
+function render() {
+  let data = POLICIES.filter(p => {
+    if (cat !== 'all' && p.category !== cat) return false;
+    if (q) {
+      const lq = q.toLowerCase();
+      return (p.product_name||'').toLowerCase().includes(lq) ||
+             (p.insurer||'').toLowerCase().includes(lq);
+    }
+    return true;
+  });
+  if (sort === 'csr') data.sort((a,b)=>b.csr-a.csr);
+  else if (sort === 'complaints') data.sort((a,b)=>(a.complaints_per_10k||99)-(b.complaints_per_10k||99));
+  else if (sort === 'solvency') data.sort((a,b)=>b.solvency_ratio-a.solvency_ratio);
+  else data.sort((a,b)=>a.product_name.localeCompare(b.product_name));
+
+  const grid = $('grid');
+  const noRes = $('no-res');
+  $('f-count').textContent = `${data.length} ${data.length===1?'policy':'policies'}`;
+  $('h-total').textContent = POLICIES.length;
+
+  if (!data.length) { grid.innerHTML=''; noRes.style.display='block'; return; }
+  noRes.style.display='none';
+  grid.innerHTML = data.slice(0,80).map(p=>renderCard(p, REVIEWS[p.id])).join('');
+}
+
+// ─── COMPARE ─────────────────────────────────────────────────────
+function toggleCompare(id) {
+  const p = POLICIES.find(x=>x.id===id);
+  if (!p) return;
+  if (compareSet.has(id)) {
+    compareSet.delete(id);
+  } else {
+    if (compareSet.size >= 3) { alert('You can compare up to 3 policies at a time.'); return; }
+    compareSet.set(id, p);
+  }
+  // update button state — new ID prefix is cmpbtn-
+  const btn = document.getElementById('cmpbtn-'+id);
+  if (btn) btn.classList.toggle('selected', compareSet.has(id));
+  updateCompareBar();
+  const cnt = $('compare-count');
+  if (cnt) cnt.textContent = compareSet.size;
+}
+
+function updateCompareBar() {
+  const bar = $('compare-bar');
+  const n = compareSet.size;
+  bar.classList.toggle('show', n > 0);
+  const items = $('cbar-items');
+  const arr = [...compareSet.values()];
+  let html = arr.map(p=>`
+    <div class="cbar-item">
+      <span>${p.product_name.substring(0,30)}</span>
+      <button onclick="toggleCompare('${p.id}')">×</button>
+    </div>`).join('');
+  for (let i=n;i<3;i++) html += `<div class="cbar-slot">+ Add policy</div>`;
+  items.innerHTML = html;
+  $('btn-compare-now').disabled = n < 2;
+}
+
+function clearCompare() {
+  compareSet.forEach((_,id)=>{ const b=$(`cmp-${id}`);if(b)b.classList.remove('selected'); });
+  compareSet.clear();
+  updateCompareBar();
+  $('compare-count').textContent = '0';
+}
+
+function openCompare() {
+  const arr = [...compareSet.values()];
+  if (arr.length < 2) return;
+  const cols = arr.length;
+
+  const rows = [
+    {label:'PolicyScore', fn:p=>`<strong class="${cmpClass(p.csr,90,95)}" style="font-size:20px">${p.csr>0?p.csr.toFixed(1)+'%':'—'}</strong>`},
+    {label:'Insurer', fn:p=>p.insurer},
+    {label:'Category', fn:p=>catLabel(p.category)},
+    {label:'Coverage Type', fn:p=>p.coverage_type||'—'},
+    {label:'Claims Paid (CSR)', fn:p=>`<span class="${p.csr>=95?'ct-good':p.csr>=90?'':' ct-bad'}">${p.csr>0?p.csr.toFixed(1)+'%':'—'}</span>`},
+    {label:'Solvency Ratio', fn:p=>`${p.solvency_ratio||'—'} <small style="color:var(--muted)">(min 1.5)</small>`},
+    {label:'Complaints / 10k', fn:p=>`<span class="${(p.complaints_per_10k||99)<=2?'ct-good':(p.complaints_per_10k||99)<=5?'':'ct-bad'}">${p.complaints_per_10k||'—'}</span>`},
+    {label:'What\'s Covered', fn:p=>(p.what_is_covered||[]).slice(0,3).map(i=>`• ${i.substring(0,70)}`).join('<br>')||'—'},
+    {label:'What\'s NOT Covered', fn:p=>(p.exclusions||[]).slice(0,3).map(i=>`🚫 ${i.substring(0,70)}`).join('<br>')||'—'},
+    {label:'Waiting Period', fn:p=>{const w=p.waiting_periods||{};return[w.initial?`Initial: ${w.initial}`:'',w.pre_existing_disease?`Pre-existing: ${w.pre_existing_disease}`:''].filter(Boolean).join('<br>')||'—'}},
+    {label:'NCB', fn:p=>(p.ncb||[]).join(' → ')||'—'},
+    {label:'Free Look', fn:p=>p.free_look||'—'},
+    {label:'Policy PDF', fn:p=>`<a href="${p.pdf_url}" target="_blank" style="color:var(--blue)">View PDF ↗</a>`},
+    {label:'Buy Direct', fn:p=>{const u=getBuyUrl(p.insurer_id);return u?`<a href="${u}" target="_blank" style="color:var(--green);font-weight:700">Buy at ${p.insurer} ↗</a>`:'—'}},
+  ];
+
+  let html = `<table class="compare-table" style="min-width:${cols*200+180}px">
+    <thead><tr>
+      <th>Feature</th>
+      ${arr.map(p=>`<th><div style="font-weight:800">${p.product_name}</div><div style="font-weight:400;color:var(--muted);margin-top:2px">${p.insurer}</div></th>`).join('')}
+    </tr></thead>
+    <tbody>
+    ${rows.map(row=>`<tr>
+      <td class="row-label">${row.label}</td>
+      ${arr.map(p=>`<td>${row.fn(p)}</td>`).join('')}
+    </tr>`).join('')}
+    </tbody>
+  </table>`;
+
+  $('compare-content').innerHTML = html;
+  $('compare-modal-bg').classList.add('open');
+}
+
+// ─── REVIEWS ─────────────────────────────────────────────────────
+function openReview(policyId, policyName, insurerId) {
+  reviewTarget = {policyId, policyName, insurerId};
+  rmRating = 0; rmClaim = null; rmOutcome = null;
+  $('rm-policy-name').textContent = policyName;
+  $('rm-polno').value=''; $('rm-text').value=''; $('rm-name').value='';
+  $('rm-outcome-wrap').style.display='none';
+  document.querySelectorAll('#rm-stars .s').forEach(s=>s.classList.replace('on','off'));
+  document.querySelectorAll('#rm-claim-btns .outcome-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('#rm-outcome-btns .outcome-btn').forEach(b=>b.classList.remove('on'));
+  $('review-modal-bg').classList.add('open');
+}
+
+// Star select
+document.querySelectorAll('#rm-stars .s').forEach(s=>{
+  s.addEventListener('click',()=>{
+    rmRating=parseInt(s.dataset.v);
+    document.querySelectorAll('#rm-stars .s').forEach(x=>{
+      x.classList.toggle('on',parseInt(x.dataset.v)<=rmRating);
+      x.classList.toggle('off',parseInt(x.dataset.v)>rmRating);
+    });
+  });
+});
+
+// Claim buttons
+document.querySelectorAll('#rm-claim-btns .outcome-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    rmClaim=b.dataset.v;
+    document.querySelectorAll('#rm-claim-btns .outcome-btn').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    $('rm-outcome-wrap').style.display=rmClaim==='yes'?'block':'none';
+  });
+});
+
+// Outcome buttons
+document.querySelectorAll('#rm-outcome-btns .outcome-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    rmOutcome=b.dataset.v;
+    document.querySelectorAll('#rm-outcome-btns .outcome-btn').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+  });
+});
+
+async function submitReview() {
+  if (!reviewTarget) return;
+  const polno=$('rm-polno').value.trim();
+  if(!polno){alert('Please enter your policy number');return;}
+  if(!rmRating){alert('Please select a rating');return;}
+  const text=$('rm-text').value.trim();
+  if(text.length<30){alert('Please write at least 30 characters');return;}
+
+  const hash=await sha256(polno);
+  const body={
+    policy_id:reviewTarget.policyId,
+    insurer_id:reviewTarget.insurerId,
+    policy_name:reviewTarget.policyName,
+    rating:rmRating,
+    claim_happened:rmClaim==='yes',
+    review_text:text,
+    claim_outcome:rmOutcome||'not_claimed_yet',
+    policy_number_hash:hash,
+    name:$('rm-name').value.trim()||'Anonymous'
+  };
+
+  try{
+    const r=await fetch('/api/reviews',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(r.ok){
+      alert('Review submitted! Thank you.');
+      closeModal('review-modal-bg');
+      // Add to local cache and re-render
+      if(!REVIEWS[reviewTarget.policyId]) REVIEWS[reviewTarget.policyId]=[];
+      REVIEWS[reviewTarget.policyId].unshift({...body,verified:true,date:new Date().toISOString().slice(0,10)});
+      render();
+    }else{
+      const e=await r.json();
+      alert('Error: '+(e.detail||'Unknown error'));
+    }
+  }catch(e){
+    alert('Could not submit review. Is the server running? Run: python3.11 server.py');
+  }
+}
+
+// ─── MODAL UTILS ─────────────────────────────────────────────────
+function closeModal(id){
+  const el=$(id);
+  if(el){el.classList.remove('open');el.style.display='';}
+}
+function closeIfBg(e,id){if(e.target===$(id))closeModal(id);}
+// Close compare on bg click
+document.getElementById('compare-modal-bg').addEventListener('click', function(e){
+  if(e.target===this) closeModal('compare-modal-bg');
+});
+
+// ─── GET BUY URL ─────────────────────────────────────────────────
+function getBuyUrl(id){
+  const m={
+    'lic':'https://licindia.in','hdfc-life':'https://hdfclife.com/online-plans',
+    'icici-pru':'https://iciciprulife.com/buy-online.html','max-life':'https://maxlifeinsurance.com/buy-online',
+    'sbi-life':'https://sbilife.co.in/online-plans','tata-aia':'https://tataaia.com/buy-online',
+    'bajaj-allianz-life':'https://bajajallianzlife.com/buy-online','kotak-life':'https://kotaklife.com/online-plans',
+    'star-health':'https://starhealth.in/buy-health-insurance','niva-bupa':'https://nivabupa.com/health-insurance-plans',
+    'care-health':'https://careinsurance.com/health-insurance','hdfc-ergo':'https://hdfcergo.com/buy-online',
+    'icici-lombard':'https://icicilombard.com/buy-online','bajaj-allianz-general':'https://bajajallianz.com/buy-online',
+    'go-digit-general':'https://godigit.com','go-digit-life':'https://godigit.com/life-insurance',
+    'acko':'https://acko.com','new-india':'https://newindia.co.in','united-india':'https://uiic.co.in',
+    'sbi-general':'https://sbigeneral.in','tata-aig':'https://tataaig.com',
+    'reliance-general':'https://reliancegeneral.co.in',
+  };
+  return m[id]||null;
+}
+
+// ─── CONTROLS ────────────────────────────────────────────────────
+document.querySelectorAll('.nav-cat').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.nav-cat').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); cat=b.dataset.cat; render();
+  });
+});
+$('search').addEventListener('input',e=>{q=e.target.value;render()});
+$('sort').addEventListener('change',e=>{sort=e.target.value;render()});
+$('compare-btn').addEventListener('click',()=>{ if(compareSet.size>=2)openCompare(); });
+
+// ─── LOAD DATA ───────────────────────────────────────────────────
+async function loadReviews(policies) {
+  try {
+    const r = await fetch('/api/reviews');
+    if (r.ok) {
+      const data = await r.json();
+      data.reviews.forEach(rv=>{
+        if (!REVIEWS[rv.policy_id]) REVIEWS[rv.policy_id]=[];
+        REVIEWS[rv.policy_id].push(rv);
+      });
+    }
+  } catch(e) {}
+}
+
+fetch('data/web_policies.json')
+  .then(r=>r.json())
+  .then(async data=>{
+    POLICIES=data;
+    await loadReviews(data);
+    render();
+  })
+  .catch(()=>{
+    $('grid').innerHTML='<div style="padding:60px;text-align:center;color:#94a3b8">Could not load data. Start server: <code>python3.11 server.py</code></div>';
+  });
+</script>
+</body>
+</html>// ─── WHY CLAIMS GET REJECTED (IRDAI complaints + policy T&C) ─────
+const DENIAL_WATCH = {
+  health: [
+    'Hospital not on cashless network → You pay full bill upfront, then fight for reimbursement for 30–90 days. Always verify empanelment before hospitalisation.',
+    'Room rent exceeded daily cap → Booked ₹6K room, policy allows ₹3K? Insurer cuts room rent AND applies proportional cuts on doctor fees, ICU, medicines — everything.',
+    'Missed 24–48hr claim intimation → Forgot to call insurer during hospitalisation? Rejected on procedure, not merit. They do not care why you forgot.',
+    '"Not medically necessary" → Insurer's in-house doctor says it was elective. Your doctor says emergency. Insurer wins. This denies thousands of claims every year.',
+    'Co-payment surprise → Page 40 quietly says you pay 10–20% of every claim. Nobody reads page 40 before buying.',
+  ],
+  life: [
+    'Non-disclosure voids policy → Didn't mention blood pressure, diabetes, or smoking? Insurer investigates after death and can void the policy — even after 10 years of premiums paid.',
+    'Suicide within 12 months → Only surrender value paid (fraction of sum assured), not the full death benefit. Standard clause in all term plans.',
+    'Policy lapsed → Missed one premium after grace period → zero coverage. Revival requires new medical exam and can be refused.',
+    'Nominee vs legal heir conflict → Nominee just collects money on behalf of legal heirs — doesn't own it legally. Wrong setup = family in court for years.',
+    'Non-standard death excluded → Murder investigation, aviation accident, adventure sports, hazardous occupation → most term plans have 15–20 specific exclusions.',
+  ],
+  auto: [
+    'Consequential damage → Drove into flooded road, engine seized = NOT covered. Only damage from water entry before you moved is covered. Huge catch in monsoon season.',
+    'Policy expired even 1 day → Accident on day 366 of a lapsed policy = full rejection. Insurers have zero grace on this. Renew before expiry.',
+    'Depreciation deducted from parts → 3-year-old car: 35% depreciation on parts. You pay ₹35 per ₹100 of parts even in comprehensive. IDV shrinks every year too.',
+    'NCB loss math → One claim wipes 5 years of No Claim Bonus (up to 50% discount). For repairs under ₹12K, paying from pocket often costs less than losing NCB.',
+    'Wrong driver license type → Spouse drove with different vehicle class license → full claim rejection. No exceptions. Check license category carefully.',
+  ],
+  accident: [
+    'Any suspicion of alcohol → Automatic investigation. Medical reports, police FIR, witness statements checked. Even one positive marker = rejected. No room for appeal.',
+    'Disability scale is brutal → Losing one eye = 50% payout. Losing one hand = 50%. You need 80%+ disability to get 100% of sum assured. Read the exact schedule.',
+    'Occupation exclusion → Construction, mining, chemical plant, fishing → specific occupation exclusions. Accident at work = no claim in many PA policies.',
+    'Adventure sports fine print → Trekking, climbing, bike racing, water sports → excluded in most PA policies unless you bought a specific rider. Most people never do.',
+    'Reporting window is short → 7 to 30 days to report after accident. Hospitalized and overwhelmed? Doesn't matter. Miss the window = procedural rejection.',
+  ]
+};
+
+// ─── 3 THINGS TO VERIFY BEFORE YOU BUY ───────────────────────────
+const REAL_TALK = {
+  health: [
+    'Is your nearest hospital on the cashless network? Check the insurer's hospital list — it changes every year.',
+    'What is the exact room rent daily cap? Sub-limits cut ALL bills proportionally, not just room rent.',
+    'Is there a co-payment? (You pay X% of every claim, forever — buried on page 40 of the document)',
+  ],
+  life: [
+    'What is the grace period if you miss a premium? And what happens after that to your coverage?',
+    'Does your nominee know the exact documents needed to file a claim within the required timeline?',
+    'What are the 5 exclusions most likely to affect you personally? Read them. Not the brochure.',
+  ],
+  auto: [
+    'What is your compulsory deductible? (₹2,000–5,000 you always pay first on every claim)',
+    'What is the current IDV of your car? (Maximum payout on total loss — shrinks every year)',
+    'What is your NCB %? (Calculate before claiming small damages — losing NCB may cost more)',
+  ],
+  accident: [
+    'What is the exact % payout for each type of disability? Get the full schedule in writing.',
+    'Does your occupation appear in the exclusion list? Some jobs are specifically excluded.',
+    'What is the exact accident reporting deadline? Set a calendar reminder for the window.',
+  ],
+};!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Poltruth — Insurance by policy document, not marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--surface:#f8fafc;--card:#ffffff;
+  --border:#e2e8f0;--border2:#cbd5e1;
+  --text:#0f172a;--sub:#475569;--muted:#94a3b8;
+  --blue:#2563eb;--blue-bg:#eff6ff;--blue-light:#dbeafe;
+  --green:#059669;--green-bg:#f0fdf4;--green-light:#d1fae5;
+  --red:#dc2626;--red-bg:#fef2f2;--red-light:#fee2e2;
+  --yellow:#d97706;--yellow-bg:#fffbeb;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 25px rgba(0,0,0,.1),0 4px 10px rgba(0,0,0,.06);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);padding:0 32px;height:60px;
+    display:flex;align-items:center;gap:24px}
+.logo{font-size:20px;font-weight:900;letter-spacing:-0.5px;white-space:nowrap}
+.logo .dot{color:var(--blue)}
+.nav-search{flex:1;max-width:400px;position:relative}
+.nav-search input{width:100%;padding:8px 16px 8px 38px;border:1.5px solid var(--border);
+  border-radius:24px;font-size:13px;outline:none;background:var(--surface);font-family:inherit;
+  transition:border-color .15s}
+.nav-search input:focus{border-color:var(--blue);background:#fff}
+.nav-search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.nav-cats{display:flex;gap:4px}
+.nav-cat{padding:5px 12px;border-radius:16px;border:none;background:transparent;
+  cursor:pointer;font-size:13px;font-weight:500;color:var(--sub);transition:all .12s}
+.nav-cat.on{background:var(--blue);color:#fff}
+.nav-cat:hover:not(.on){background:var(--surface);color:var(--text)}
+.nav-compare{margin-left:auto;padding:7px 16px;border-radius:8px;border:1.5px solid var(--border);
+  background:#fff;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;
+  transition:all .15s;white-space:nowrap}
+.nav-compare:hover{border-color:var(--blue);color:var(--blue)}
+.compare-badge{background:var(--blue);color:#fff;border-radius:10px;padding:1px 6px;font-size:11px}
+
+/* HERO */
+.hero{max-width:880px;margin:0 auto;padding:64px 32px 40px;text-align:center}
+.hero-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;
+  border-radius:20px;background:var(--green-bg);border:1px solid var(--green-light);
+  color:var(--green);font-size:12px;font-weight:600;margin-bottom:20px}
+.hero h1{font-size:clamp(32px,5vw,54px);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:18px}
+.hero h1 .accent{color:var(--blue)}
+.hero p{font-size:17px;color:var(--sub);line-height:1.7;max-width:560px;margin:0 auto 32px}
+.trust-bar{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--sub)}
+.trust-item .dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
+
+/* HOW IT WORKS */
+.how{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+     padding:48px 32px}
+.how-inner{max-width:800px;margin:0 auto}
+.how-title{text-align:center;font-size:14px;font-weight:700;text-transform:uppercase;
+  letter-spacing:1px;color:var(--muted);margin-bottom:32px}
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.how-step{text-align:center}
+.how-step .icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;
+  justify-content:center;font-size:22px;margin:0 auto 14px}
+.how-step h3{font-size:15px;font-weight:700;margin-bottom:6px}
+.how-step p{font-size:13px;color:var(--sub);line-height:1.6}
+
+/* SCORE EXPLAINER */
+.score-explainer{max-width:800px;margin:0 auto;padding:40px 32px}
+.se-title{font-size:22px;font-weight:800;margin-bottom:8px;letter-spacing:-.3px}
+.se-sub{color:var(--sub);font-size:14px;margin-bottom:24px}
+.se-bands{display:flex;gap:12px;flex-wrap:wrap}
+.se-band{flex:1;min-width:120px;padding:14px 16px;border-radius:12px;border:1.5px solid}
+.se-band-a{background:var(--green-bg);border-color:var(--green-light)}
+.se-band-b{background:#f0fdf4;border-color:#bbf7d0}
+.se-band-c{background:var(--yellow-bg);border-color:#fde68a}
+.se-band-d{background:var(--red-bg);border-color:var(--red-light)}
+.se-band .range{font-size:22px;font-weight:900}
+.se-band .label{font-size:12px;color:var(--sub);margin-top:2px}
+.se-band-a .range{color:var(--green)}
+.se-band-b .range{color:#16a34a}
+.se-band-c .range{color:var(--yellow)}
+.se-band-d .range{color:var(--red)}
+
+/* FILTERS */
+.filters{border-top:1px solid var(--border);padding:14px 32px;
+  display:flex;align-items:center;gap:12px;background:#fff;position:sticky;top:60px;z-index:40}
+.f-count{font-size:13px;color:var(--muted);margin-left:auto}
+.sort-sel{padding:6px 10px;border:1.5px solid var(--border);border-radius:8px;
+  font-size:12px;font-family:inherit;cursor:pointer;outline:none;color:var(--text);background:#fff}
+.sort-sel:focus{border-color:var(--blue)}
+
+/* MARKETING VS REALITY */
+.mvr-banner{max-width:1200px;margin:0 auto 8px;padding:0 32px}
+.mvr-card{background:linear-gradient(135deg,#1e3a5f 0%,#1e293b 100%);
+  border-radius:16px;padding:24px 28px;color:#fff;overflow:hidden;position:relative}
+.mvr-card::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;
+  border-radius:50%;background:rgba(59,130,246,.15)}
+.mvr-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:#93c5fd;margin-bottom:12px}
+.mvr-title{font-size:18px;font-weight:800;margin-bottom:20px}
+.mvr-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mvr-side{padding:14px 16px;border-radius:10px}
+.mvr-side h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.mvr-ad{background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3)}
+.mvr-ad h4{color:#fca5a5}
+.mvr-truth{background:rgba(5,150,105,.15);border:1px solid rgba(5,150,105,.3)}
+.mvr-truth h4{color:#6ee7b7}
+.mvr-items{list-style:none}
+.mvr-items li{font-size:13px;line-height:1.6;color:rgba(255,255,255,.85);
+  padding:4px 0 4px 18px;position:relative}
+.mvr-items li::before{position:absolute;left:0}
+.mvr-ad .mvr-items li::before{content:'📢'}
+.mvr-truth .mvr-items li::before{content:'📋'}
+
+/* GRID */
+.grid-wrap{max-width:1200px;margin:0 auto;padding:24px 32px 80px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px}
+
+/* CARD */
+.card{background:#fff;border:1.5px solid var(--border);border-radius:16px;
+  overflow:hidden;transition:box-shadow .2s,border-color .2s;cursor:default}
+.card:hover{box-shadow:var(--shadow-lg);border-color:var(--blue)}
+
+.card-top{padding:20px 20px 0}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.card-left{flex:1;margin-right:12px}
+.card-cat{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:6px;margin-bottom:7px}
+.cat-health{background:#dcfce7;color:#15803d}
+.cat-life{background:#dbeafe;color:#1d4ed8}
+.cat-auto{background:#fee2e2;color:#b91c1c}
+.cat-accident{background:#fef9c3;color:#854d0e}
+.card-name{font-size:15px;font-weight:700;line-height:1.3;letter-spacing:-.2px}
+.card-insurer{font-size:12px;color:var(--sub);margin-top:3px;display:flex;align-items:center;gap:5px}
+.verified-tick{width:14px;height:14px;background:var(--blue);border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;font-size:8px;color:#fff}
+
+/* POLICY SCORE */
+.score-box{text-align:center;flex-shrink:0}
+.score-ring{width:68px;height:68px;border-radius:50%;border:3px solid;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--surface)}
+.score-num{font-size:21px;font-weight:900;line-height:1}
+.score-txt{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--muted);margin-top:1px}
+.score-label{font-size:9px;color:var(--muted);margin-top:4px;text-align:center}
+.sg-a{border-color:var(--green);background:var(--green-bg)}.sg-a .score-num{color:var(--green)}
+.sg-b{border-color:#16a34a;background:#f0fdf4}.sg-b .score-num{color:#16a34a}
+.sg-c{border-color:var(--yellow);background:var(--yellow-bg)}.sg-c .score-num{color:var(--yellow)}
+.sg-d{border-color:var(--red);background:var(--red-bg)}.sg-d .score-num{color:var(--red)}
+
+/* METRICS ROW */
+.metrics{display:flex;gap:1px;background:var(--border);border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);margin-top:14px}
+.metric{flex:1;padding:10px 12px;background:#fff;text-align:center}
+.metric:first-child{border-radius:0}
+.metric-val{font-size:14px;font-weight:800}
+.metric-lab{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;margin-top:2px}
+.m-good{color:var(--green)}
+.m-ok{color:var(--yellow)}
+.m-bad{color:var(--red)}
+
+/* T&C SECTIONS */
+.card-body{padding:14px 20px}
+.section-hd{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin:12px 0 6px}
+.section-hd .pill{display:inline-block;padding:1px 7px;border-radius:8px;font-size:9px}
+.pill-must{background:var(--blue-light);color:var(--blue)}
+.pill-truth{background:#f3e8ff;color:#7c3aed}
+.pill-excl{background:var(--red-light);color:var(--red)}
+
+.tc-list{list-style:none}
+.tc-item{display:flex;gap:8px;padding:4px 0;font-size:12px;color:var(--sub);line-height:1.5;
+  border-bottom:1px solid var(--surface)}
+.tc-item:last-child{border-bottom:none}
+.tc-icon{flex-shrink:0;font-size:13px;margin-top:1px}
+
+/* WAITING PERIOD VISUAL */
+.waiting-bar{background:var(--surface);border-radius:8px;padding:10px 12px;margin:8px 0;
+  font-size:12px;display:flex;align-items:center;gap:10px}
+.waiting-bar .icon{font-size:16px}
+.wp-text{flex:1}
+.wp-text strong{color:var(--yellow);font-weight:700}
+
+/* STARS */
+.stars{display:flex;gap:2px}
+.star{font-size:13px;cursor:pointer}
+.star.on{color:#f59e0b}
+.star.off{color:var(--border2)}
+.review-count{font-size:11px;color:var(--muted);margin-left:5px}
+
+/* REVIEWS PREVIEW */
+.reviews-preview{padding:0 20px 10px}
+.review-chip{background:var(--surface);border-radius:8px;padding:10px 12px;margin-bottom:6px;font-size:12px}
+.review-chip .rc-top{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.review-chip .rc-name{font-weight:600;font-size:12px}
+.review-chip .rc-outcome{font-size:10px;padding:2px 7px;border-radius:8px;font-weight:600}
+.outcome-approved{background:var(--green-light);color:var(--green)}
+.outcome-rejected{background:var(--red-light);color:var(--red)}
+.outcome-partial{background:#fef9c3;color:#854d0e}
+.review-chip .rc-text{color:var(--sub);line-height:1.5}
+.rc-verified{font-size:10px;color:var(--blue);display:flex;align-items:center;gap:3px}
+
+/* ACTIONS */
+.card-actions{padding:14px 20px;border-top:1px solid var(--border);
+  display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;
+  padding:9px 14px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;
+  border:none;text-decoration:none;transition:all .15s;font-family:inherit}
+.btn-pdf{background:var(--surface);border:1.5px solid var(--border);color:var(--sub);flex:1}
+.btn-pdf:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-bg)}
+.btn-buy{background:var(--green);color:#fff;flex:1.2}
+.btn-buy:hover{background:#047857}
+.btn-review{background:transparent;border:1.5px solid var(--border);color:var(--sub);padding:9px 10px}
+.btn-review:hover{border-color:var(--yellow);color:var(--yellow)}
+.btn-cmp{background:transparent;border:1.5px solid var(--border);color:var(--sub);padding:9px 10px;
+  font-size:12px}
+.btn-cmp.selected{background:var(--blue-bg);border-color:var(--blue);color:var(--blue)}
+.btn-cmp:hover:not(.selected){border-color:var(--blue);color:var(--blue)}
+
 /* COMPARE BAR */
 .compare-bar{position:fixed;bottom:0;left:0;right:0;z-index:60;
   background:#1e293b;padding:16px 32px;display:flex;align-items:center;gap:16px;
@@ -591,43 +1699,60 @@ async function sha256(s) {
   return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('').slice(0,16);
 }
 
-// ─── HIDDEN TRUTHS PER CATEGORY ──────────────────────────────────
-const HIDDEN_TRUTHS = {
+// ─── WHY CLAIMS GET REJECTED (from real IRDAI complaints + policy T&C) ──────
+const DENIAL_WATCH = {
   health: [
-    {icon:'⚠️', text:'Room rent sub-limit: many policies cap at ₹2,000-5,000/day. Actual cost in major hospitals: ₹8,000-20,000/day. You pay the gap + proportional co-sharing on all other charges.'},
-    {icon:'⚠️', text:'"Reasonable & customary" clause: they pay what THEY consider a standard rate for your city — not what the hospital actually charges.'},
-    {icon:'⚠️', text:'Pre-existing condition is defined broadly. Something diagnosed 5 years ago? Still pre-existing. Even a condition you didn\'t know about can be used to reject.'},
-    {icon:'⚠️', text:'Claim intimation window: you must notify the insurer within 24-48 hours of hospitalization. Miss this? Claim can be rejected on procedural grounds.'},
-    {icon:'⚠️', text:'Co-payment clause: some policies require you pay 10-20% of every claim — forever. This is hidden in page 40 of the policy document.'},
+    {text:'Hospital not on cashless network → You pay full bill upfront, then fight for reimbursement. Takes 30–90 days. Always verify empanelment before hospitalization.'},
+    {text:'Room rent exceeded the daily cap → You booked a ₹6K room, policy allows ₹3K. Insurer cuts room rent AND applies proportional cuts on doctor fees, ICU, medicines — everything.'},
+    {text:'Pre-existing disease catch → Condition diagnosed before your policy start date is excluded for 2–4 years. Even a condition you didn\'t know about can be labelled pre-existing.'},
+    {text:'Missed 24–48hr claim intimation → Forgot to call insurer before or during hospitalization? Rejected on procedure — not on merit. No exceptions.'},
+    {text:'"Not medically necessary" → Insurer says it was elective, you say emergency. They have in-house doctors who decide. This kills thousands of claims every year.'},
   ],
   life: [
-    {icon:'⚠️', text:'Suicide clause: if death by suicide occurs within 12 months of policy start, insurer pays only surrender value — not the full sum assured.'},
-    {icon:'⚠️', text:'Mis-statement clause: if any fact in your proposal is found incorrect later, the policy can be declared void — even after you\'ve paid premiums for years.'},
-    {icon:'⚠️', text:'Aviation exclusion: death in a private aircraft or during air sports may not be covered even in a "comprehensive" term plan.'},
-    {icon:'⚠️', text:'Policy lapse: miss even one premium (after grace period ends) and you lose all coverage. Revival requires medical checkup and can be denied.'},
-    {icon:'⚠️', text:'Assignment vs nomination: only a legal heir assignment gives absolute rights. A nominee just collects — they don\'t own the money legally.'},
+    {text:'Non-disclosure voids the policy → Didn\'t mention blood pressure, diabetes, or smoking in the proposal? Insurer investigates after death and can void the entire policy — even after 10 years of premiums.'},
+    {text:'Suicide within 12 months → Only surrender value is paid (a fraction of sum assured), not the full death benefit. This is in every policy on page 8.'},
+    {text:'Policy lapsed mid-claim → Missed one premium after grace period → zero coverage. Revival requires new medical exam and can be refused.'},
+    {text:'Nominee vs. legal heir conflict → Your nominee collects, but legal heirs can challenge. Wrong nomination setup = your family in court for years instead of getting the money.'},
+    {text:'Non-standard death not covered → Murder investigation, aviation, adventure sports, specific occupations → read the exact list. Most term plans have 15–20 exclusions.'},
   ],
   auto: [
-    {icon:'⚠️', text:'Depreciation schedule: your 3-year-old car has 35% depreciation on parts. They pay 65% of part cost — even in comprehensive insurance.'},
-    {icon:'⚠️', text:'Betterment charge: if an old part is replaced with a new one, you pay the "improvement" amount. Always.'},
-    {icon:'⚠️', text:'Compulsory deductible: first ₹2,000-5,000 of every claim is yours to pay — no matter what.'},
-    {icon:'⚠️', text:'Consequential loss exclusion: if you drove a flooded car and the engine seized — not covered. Only initial flood damage is covered.'},
-    {icon:'⚠️', text:'NCB reset: one claim resets 5 years of No Claim Bonus. The discount you built disappears. Think carefully before claiming small damages.'},
+    {text:'Drove into flood → Consequential damage. Engine seized after you drove through waterlogged road = NOT covered. Only damage from water entry before you moved is covered.'},
+    {text:'Policy expired even one day → Accident on day 366 of a lapsed policy = full rejection. Insurers have zero grace on this. Renew before expiry, always.'},
+    {text:'Depreciation hits everything → 3-year-old car: 35% depreciation on parts. You pay ₹35 per ₹100 of parts even in comprehensive insurance. IDV also shrinks every year.'},
+    {text:'NCB loss math → One claim wipes 5 years of No Claim Bonus (20–50% discount). For small repairs under ₹15K, paying from pocket often costs less than losing NCB.'},
+    {text:'Wrong license type → Driver had learner\'s license or license for different vehicle class → full claim rejection. This applies to family members driving your car too.'},
   ],
   accident: [
-    {icon:'⚠️', text:'Under-influence exclusion: accident while under the influence of alcohol or drugs — regardless of whose fault — is excluded.'},
-    {icon:'⚠️', text:'Partial disability scale: 80-100% disability gets 100% payout. But loss of one eye or one hand is typically only 50%. Read the exact scale.'},
-    {icon:'⚠️', text:'Occupational exclusion: if your job involves hazardous activity (construction, mining, chemical work) you may be specifically excluded.'},
-    {icon:'⚠️', text:'Adventure sport exclusion: accident during trekking, adventure sports, racing — most PA policies exclude these entirely.'},
-    {icon:'⚠️', text:'Claim must be reported within 7-30 days. No exceptions. Delayed reporting = rejection.'},
+    {text:'Any suspicion of alcohol → Automatic investigation by insurer. Medical reports, police FIR, witnesses checked. Even one positive marker = rejected. No room for appeal.'},
+    {text:'Disability scale is brutal → Losing one eye = 50% payout. Losing one hand = 50%. You need 80%+ disability to get 100% of sum assured. Read the exact schedule.'},
+    {text:'Job category exclusion → Construction worker, miner, chemical plant worker, fisherman → specific occupation exclusions. Accident at work = no claim for many PA policies.'},
+    {text:'Adventure sports fine print → Trekking, rock climbing, bike racing, water sports → excluded in most PA policies unless you bought a specific rider. Most people don\'t.'},
+    {text:'Reporting window is short → 7 to 30 days to report after accident. Hospitalized, phone dead, family overwhelmed? Doesn\'t matter. Miss the window = procedural rejection.'},
   ]
 };
 
-const MUST_KNOW = {
-  health: ['What is the initial waiting period before any claim?','What pre-existing diseases are excluded and for how many years?','Is there a room rent daily sub-limit?','What is the claim process — cashless or reimbursement?','Is there a co-payment (% you pay on every claim)?'],
-  life: ['What is the exact death benefit and payout timeline?','What is the grace period if you miss a premium?','What events will cause your claim to be rejected?','How does your nominee actually file a claim? What documents?','What is the free-look period to cancel and get a refund?'],
-  auto: ['What is your compulsory deductible on every claim?','What is the depreciation rate for your car\'s age?','How does NCB work and what makes you lose it?','What is the claim intimation process after an accident?','What is the IDV (Insured Declared Value) — this is what you get on total loss?'],
-  accident: ['What exact disability % triggers what payout?','What daily hospital cash benefit (if any)?','What is excluded — sports, occupation, influence?','What is the claim window after an accident?','Does this cover accidental death separately from disability?'],
+// ─── REAL TALK: 3 things to verify before you buy ────────────────────────────
+const REAL_TALK = {
+  health: [
+    'Is YOUR nearest hospital on the cashless network? (check the insurer\'s list)',
+    'What is the exact room rent daily cap? (sub-limits apply to everything, not just room)',
+    'What\'s the co-payment %? (means you pay that % of every single claim, forever)',
+  ],
+  life: [
+    'What happens to my policy if I miss one premium? (grace period + revival conditions)',
+    'Does my nominee know how to file a claim? (documents, process, timeline)',
+    'What are the 5 events that will make this claim rejected? (read exclusions, not the brochure)',
+  ],
+  auto: [
+    'What is the compulsory deductible on every claim? (₹2K–₹5K you always pay first)',
+    'What is my IDV (Insured Declared Value)? (this is the maximum you can ever get)',
+    'What happens to my NCB if I make one claim? (calculate if it\'s worth claiming at all)',
+  ],
+  accident: [
+    'What is the exact % payout for each type of disability? (get the full schedule)',
+    'Does this cover accidents in other countries? (international travel = check carefully)',
+    'What is the exact accident reporting deadline? (7–30 days — set a reminder now)',
+  ],
 };
 
 // ─── RENDER CARD ─────────────────────────────────────────────────
