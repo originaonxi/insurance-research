@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+data/policies_found.json
+data/parsed_policies.json
+*.pdf
+node_modules/
+.next/
