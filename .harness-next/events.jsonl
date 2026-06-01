@@ -1,0 +1,4 @@
+{"payload": {"decision": "ask", "kind": "write", "reason": "no active approved task", "task": null, "tool": "Write", "value": ""}, "session_id": "ea48ef30", "time": "2026-06-01T17:44:06.788770+00:00", "type": "policy"}
+{"payload": {"decision": "allow", "kind": "bash", "reason": "no bash policy matched", "task": null, "tool": "Bash", "value": ""}, "session_id": "0faf2e3e", "time": "2026-06-01T17:44:31.415408+00:00", "type": "policy"}
+{"payload": {"decision": "allow", "kind": "bash", "reason": "no bash policy matched", "task": null, "tool": "Bash", "value": ""}, "session_id": "4a1e8edd", "time": "2026-06-01T17:44:35.137346+00:00", "type": "policy"}
+{"payload": {"decision": "allow", "kind": "bash", "reason": "no bash policy matched", "task": null, "tool": "Bash", "value": ""}, "session_id": "7de443bc", "time": "2026-06-01T17:44:40.021159+00:00", "type": "policy"}
