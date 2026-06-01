@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poltruth — Insurance by policy document, not marketing</title>
+<style>
+  :root {
+    --green: #16a34a; --yellow: #d97706; --red: #dc2626;
+    --bg: #0f172a; --card: #1e293b; --border: #334155;
+    --text: #f1f5f9; --muted: #94a3b8; --accent: #3b82f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+         background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  header { padding: 24px 32px; border-bottom: 1px solid var(--border);
+           display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
+  .logo span { color: var(--accent); }
+  .tagline { color: var(--muted); font-size: 13px; }
+
+  .hero { padding: 40px 32px 24px; max-width: 860px; }
+  .hero h1 { font-size: 36px; font-weight: 800; line-height: 1.2; margin-bottom: 12px; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p { color: var(--muted); font-size: 16px; max-width: 600px; line-height: 1.6; }
+
+  .stats-bar { display: flex; gap: 32px; padding: 16px 32px;
+               border-bottom: 1px solid var(--border); background: #162032; }
+  .stat { text-align: center; }
+  .stat-n { font-size: 22px; font-weight: 800; color: var(--accent); }
+  .stat-l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .controls { padding: 20px 32px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+              border-bottom: 1px solid var(--border); }
+  .filter-btn { padding: 7px 16px; border-radius: 20px; border: 1px solid var(--border);
+                background: transparent; color: var(--muted); cursor: pointer; font-size: 13px;
+                transition: all 0.15s; }
+  .filter-btn.active { background: var(--accent); border-color: var(--accent); color: white; font-weight: 600; }
+  .filter-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+  .search { flex: 1; max-width: 320px; padding: 8px 14px; background: var(--card);
+            border: 1px solid var(--border); border-radius: 8px; color: var(--text);
+            font-size: 13px; outline: none; }
+  .search:focus { border-color: var(--accent); }
+  .sort-select { padding: 7px 12px; background: var(--card); border: 1px solid var(--border);
+                 color: var(--text); border-radius: 8px; font-size: 13px; cursor: pointer; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+          gap: 20px; padding: 24px 32px; }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+          padding: 20px; transition: border-color 0.15s; position: relative; overflow: hidden; }
+  .card:hover { border-color: var(--accent); }
+
+  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+  .card-title { font-size: 15px; font-weight: 700; line-height: 1.3; flex: 1; margin-right: 12px; }
+  .card-insurer { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+  .score-badge { text-align: center; min-width: 64px; }
+  .score-num { font-size: 26px; font-weight: 900; line-height: 1; }
+  .score-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .score-A { color: var(--green); }
+  .score-B { color: #22c55e; }
+  .score-C { color: var(--yellow); }
+  .score-D { color: #ef4444; }
+
+  .cat-badge { display: inline-block; font-size: 10px; padding: 3px 8px; border-radius: 10px;
+               font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .cat-health { background: #0d4f3c; color: #4ade80; }
+  .cat-life { background: #1e3a5f; color: #60a5fa; }
+  .cat-auto { background: #4a1d1d; color: #f87171; }
+  .cat-accident { background: #3b2b00; color: #fbbf24; }
+
+  .metrics { display: flex; gap: 12px; margin: 10px 0; }
+  .metric { flex: 1; background: #0f1f35; border-radius: 8px; padding: 8px 10px; }
+  .metric-val { font-size: 15px; font-weight: 700; }
+  .metric-label { font-size: 10px; color: var(--muted); }
+
+  .section-title { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase;
+                   letter-spacing: 0.5px; margin: 12px 0 6px; }
+  .tc-list { list-style: none; }
+  .tc-list li { font-size: 12px; color: #cbd5e1; padding: 3px 0; padding-left: 16px; position: relative; }
+  .tc-list li::before { content: attr(data-icon); position: absolute; left: 0; }
+  .tc-list.covered li::before { content: '✓'; color: var(--green); }
+  .tc-list.excluded li::before { content: '✗'; color: var(--red); }
+
+  .waiting { font-size: 12px; color: var(--muted); margin: 8px 0;
+             background: #0f1f35; padding: 8px 10px; border-radius: 6px; }
+  .waiting span { color: var(--yellow); font-weight: 600; }
+
+  .actions { display: flex; gap: 8px; margin-top: 16px; }
+  .btn { flex: 1; padding: 9px 12px; border-radius: 8px; border: none; cursor: pointer;
+         font-size: 13px; font-weight: 600; text-decoration: none; text-align: center;
+         display: flex; align-items: center; justify-content: center; gap: 5px; }
+  .btn-pdf { background: #1e3a5f; color: #93c5fd; border: 1px solid #2563eb; }
+  .btn-buy { background: var(--green); color: white; }
+  .btn-pdf:hover { background: #2563eb; color: white; }
+  .btn-buy:hover { background: #15803d; }
+
+  .irdai-note { font-size: 10px; color: #475569; padding: 2px 8px;
+                position: absolute; bottom: 8px; right: 12px; }
+
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+                   z-index: 100; align-items: center; justify-content: center; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+           padding: 28px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; }
+  .modal h2 { margin-bottom: 8px; }
+  .modal-close { float: right; cursor: pointer; color: var(--muted); font-size: 20px; }
+
+  .no-results { padding: 60px 32px; text-align: center; color: var(--muted); }
+  .footer { padding: 32px; border-top: 1px solid var(--border); color: var(--muted);
+            font-size: 12px; line-height: 1.8; }
+  .footer strong { color: var(--text); }
+
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; padding: 16px; }
+    .hero { padding: 24px 16px; }
+    .controls { padding: 12px 16px; }
+    .stats-bar { padding: 12px 16px; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">Pol<span>truth</span></div>
+    <div class="tagline">Policy document is the truth. Not marketing.</div>
+  </div>
+  <div style="color:var(--muted);font-size:12px;text-align:right">
+    Data source: IRDAI Annual Report 2023-24<br>
+    Buy direct. No broker. No commission.
+  </div>
+</header>
+
+<div class="hero">
+  <h1>Every Indian deserves to know<br>what their insurance <em>actually</em> covers.</h1>
+  <p>We read every policy document so you don't have to. Compare real T&C, not ads. Buy direct from the insurer. Free forever.</p>
+</div>
+
+<div class="stats-bar" id="stats-bar">
+  <div class="stat"><div class="stat-n" id="stat-total">0</div><div class="stat-l">Policies</div></div>
+  <div class="stat"><div class="stat-n" id="stat-insurers">0</div><div class="stat-l">Insurers</div></div>
+  <div class="stat"><div class="stat-n" id="stat-pdfs">259</div><div class="stat-l">PDFs Analyzed</div></div>
+  <div class="stat"><div class="stat-n" style="color:var(--green)">0</div><div class="stat-l">API Cost</div></div>
+</div>
+
+<div class="controls">
+  <button class="filter-btn active" data-cat="all">All</button>
+  <button class="filter-btn" data-cat="health">Health</button>
+  <button class="filter-btn" data-cat="life">Life</button>
+  <button class="filter-btn" data-cat="auto">Auto</button>
+  <input class="search" type="text" placeholder="Search policies, insurers..." id="search">
+  <select class="sort-select" id="sort">
+    <option value="csr">Sort: PolicyScore (CSR)</option>
+    <option value="complaints">Sort: Fewer Complaints</option>
+    <option value="solvency">Sort: Solvency Ratio</option>
+  </select>
+</div>
+
+<div class="grid" id="grid"></div>
+<div class="no-results" id="no-results" style="display:none">No policies found.</div>
+
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<div class="footer">
+  <strong>What is PolicyScore?</strong> It's the Claim Settlement Ratio (CSR) — out of every 100 claims filed, how many did the insurer actually pay. Higher = better. Source: IRDAI Annual Report 2023-24.<br><br>
+  <strong>What is Solvency Ratio?</strong> The insurer's financial health. IRDAI requires minimum 1.5. Higher = safer.<br><br>
+  <strong>Complaints per 10,000 policies</strong> — how many customers complained to IRDAI. Lower = better.<br><br>
+  All data from official IRDAI sources. Policy documents downloaded directly from insurer websites. No sponsorships. No broker fees. Buy direct from insurer's official website.<br><br>
+  Built with ❤️ for every Indian. India first. World next.
+</div>
+
+<script>
+let ALL_POLICIES = [];
+let currentCat = 'all';
+let currentSearch = '';
+let currentSort = 'csr';
+
+function scoreClass(csr) {
+  if (csr >= 98) return 'A';
+  if (csr >= 95) return 'B';
+  if (csr >= 90) return 'C';
+  return 'D';
+}
+
+function catClass(cat) {
+  return `cat-${cat}`;
+}
+
+function catLabel(cat) {
+  return {health:'Health',life:'Life',auto:'Auto / Motor',accident:'Accident'}[cat] || cat;
+}
+
+function renderCard(p) {
+  const grade = scoreClass(p.csr);
+  const csr = p.csr > 0 ? p.csr.toFixed(1) + '%' : 'N/A';
+  const covered = (p.what_is_covered || []).slice(0,3).map(i => `<li>${i.substring(0,70)}</li>`).join('');
+  const excluded = (p.exclusions || []).slice(0,3).map(i => `<li>${i.substring(0,70)}</li>`).join('');
+  const wp = p.waiting_periods || {};
+  const wpText = [
+    wp.initial ? `Initial: ${wp.initial}` : '',
+    wp.pre_existing_disease ? `Pre-existing: ${wp.pre_existing_disease}` : ''
+  ].filter(Boolean).join(' · ');
+
+  const buyUrl = getBuyUrl(p.insurer_id);
+
+  return `
+    <div class="card" data-id="${p.id}">
+      <div class="card-header">
+        <div>
+          <div class="cat-badge ${catClass(p.category)}">${catLabel(p.category)}</div>
+          <div class="card-title">${p.product_name}</div>
+          <div class="card-insurer">${p.insurer}</div>
+        </div>
+        <div class="score-badge">
+          <div class="score-num score-${grade}">${p.csr > 0 ? p.csr.toFixed(0) : '?'}</div>
+          <div class="score-label">PolicyScore</div>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric">
+          <div class="metric-val" style="color:${p.csr>=95?'#4ade80':p.csr>=90?'#fbbf24':'#f87171'}">${csr}</div>
+          <div class="metric-label">Claims Paid</div>
+        </div>
+        <div class="metric">
+          <div class="metric-val">${p.solvency_ratio ? p.solvency_ratio.toFixed(2) : 'N/A'}</div>
+          <div class="metric-label">Solvency</div>
+        </div>
+        <div class="metric">
+          <div class="metric-val" style="color:${p.complaints_per_10k<=2?'#4ade80':p.complaints_per_10k<=5?'#fbbf24':'#f87171'}">${p.complaints_per_10k || 'N/A'}</div>
+          <div class="metric-label">Complaints/10k</div>
+        </div>
+      </div>
+
+      ${covered ? `<div class="section-title">What's covered</div><ul class="tc-list covered">${covered}</ul>` : ''}
+      ${excluded ? `<div class="section-title">What's NOT covered</div><ul class="tc-list excluded">${excluded}</ul>` : ''}
+      ${wpText ? `<div class="waiting">⏱ Waiting: <span>${wpText}</span></div>` : ''}
+
+      <div class="actions">
+        <a class="btn btn-pdf" href="${p.pdf_url}" target="_blank" rel="noopener">📄 Policy PDF</a>
+        ${buyUrl ? `<a class="btn btn-buy" href="${buyUrl}" target="_blank" rel="noopener">Buy Direct ↗</a>` : ''}
+      </div>
+      <div class="irdai-note">IRDAI verified</div>
+    </div>`;
+}
+
+function getBuyUrl(id) {
+  const urls = {
+    'lic': 'https://licindia.in',
+    'hdfc-life': 'https://hdfclife.com/online-plans',
+    'icici-pru': 'https://iciciprulife.com/buy-online.html',
+    'max-life': 'https://maxlifeinsurance.com/buy-online',
+    'sbi-life': 'https://sbilife.co.in/online-plans',
+    'tata-aia': 'https://tataaia.com/buy-online',
+    'bajaj-allianz-life': 'https://bajajallianzlife.com/buy-online',
+    'kotak-life': 'https://kotaklife.com/online-plans',
+    'star-health': 'https://starhealth.in/buy-health-insurance',
+    'niva-bupa': 'https://nivabupa.com/health-insurance-plans',
+    'care-health': 'https://careinsurance.com/health-insurance',
+    'hdfc-ergo': 'https://hdfcergo.com/buy-online',
+    'icici-lombard': 'https://icicilombard.com/buy-online',
+    'bajaj-allianz-general': 'https://bajajallianz.com/buy-online',
+    'go-digit-general': 'https://godigit.com',
+    'go-digit-life': 'https://godigit.com/life-insurance',
+    'acko': 'https://acko.com',
+    'new-india': 'https://newindia.co.in',
+    'united-india': 'https://uiic.co.in',
+    'sbi-general': 'https://sbigeneral.in',
+    'tata-aig': 'https://tataaig.com',
+    'reliance-general': 'https://reliancegeneral.co.in',
+  };
+  return urls[id] || null;
+}
+
+function render() {
+  let data = ALL_POLICIES.filter(p => {
+    if (currentCat !== 'all' && p.category !== currentCat) return false;
+    if (currentSearch) {
+      const q = currentSearch.toLowerCase();
+      return (p.product_name || '').toLowerCase().includes(q) ||
+             (p.insurer || '').toLowerCase().includes(q) ||
+             (p.category || '').toLowerCase().includes(q);
+    }
+    return true;
+  });
+
+  if (currentSort === 'csr') data.sort((a,b) => b.csr - a.csr);
+  else if (currentSort === 'complaints') data.sort((a,b) => a.complaints_per_10k - b.complaints_per_10k);
+  else if (currentSort === 'solvency') data.sort((a,b) => b.solvency_ratio - a.solvency_ratio);
+
+  const grid = document.getElementById('grid');
+  const noRes = document.getElementById('no-results');
+  document.getElementById('stat-total').textContent = data.length;
+
+  if (data.length === 0) {
+    grid.innerHTML = '';
+    noRes.style.display = 'block';
+    return;
+  }
+  noRes.style.display = 'none';
+  grid.innerHTML = data.slice(0, 100).map(renderCard).join('');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modal')) {
+    document.getElementById('modal').classList.remove('open');
+  }
+}
+
+// Load data
+fetch('data/web_policies.json')
+  .then(r => r.json())
+  .then(data => {
+    ALL_POLICIES = data;
+    const insurers = new Set(data.map(p => p.insurer_id)).size;
+    document.getElementById('stat-insurers').textContent = insurers;
+    render();
+  })
+  .catch(() => {
+    document.getElementById('grid').innerHTML = '<div style="padding:40px;color:#64748b">Could not load policy data. Run from the project directory with: python3 -m http.server 8080</div>';
+  });
+
+// Controls
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCat = btn.dataset.cat;
+    render();
+  });
+});
+
+document.getElementById('search').addEventListener('input', e => {
+  currentSearch = e.target.value;
+  render();
+});
+
+document.getElementById('sort').addEventListener('change', e => {
+  currentSort = e.target.value;
+  render();
+});
+</script>
+</body>
+</html>
