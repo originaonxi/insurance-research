@@ -3,465 +3,472 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Poltruth — Insurance by policy document, not marketing</title>
+<title>Poltruth — India's Insurance Truth</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,300;1,9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#ffffff;--surface:#f8fafc;--card:#ffffff;
-  --border:#e2e8f0;--border2:#cbd5e1;
-  --text:#0f172a;--sub:#475569;--muted:#94a3b8;
-  --blue:#2563eb;--blue-bg:#eff6ff;--blue-light:#dbeafe;
-  --green:#059669;--green-bg:#f0fdf4;--green-light:#d1fae5;
-  --red:#dc2626;--red-bg:#fef2f2;--red-light:#fee2e2;
-  --yellow:#d97706;--yellow-bg:#fffbeb;
-  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
-  --shadow-lg:0 10px 25px rgba(0,0,0,.1),0 4px 10px rgba(0,0,0,.06);
+  --ink:#0f172a;--sub:#334155;--muted:#64748b;--quiet:#94a3b8;
+  --line:#e2e8f0;--paper:#f8f9fc;--panel:#fff;
+  --blue:#4f46e5;--violet:#7c3aed;--teal:#0ea5e9;
+  --pink:#ec4899;--gold:#f59e0b;--green:#16a34a;
+  --grad:linear-gradient(110deg,#0ea5e9 0%,#4f46e5 30%,#7c3aed 54%,#ec4899 78%,#f59e0b 100%);
+  --dark:#0a0a12;--dark2:#12121e;--dark3:#1a1a2e;
 }
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{font-family:"Inter",sans-serif;background:#fff;color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-/* NAV */
-nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--border);padding:0 32px;height:60px;
-    display:flex;align-items:center;gap:24px}
-.logo{font-size:20px;font-weight:900;letter-spacing:-0.5px;white-space:nowrap}
-.logo .dot{color:var(--blue)}
-.nav-search{flex:1;max-width:400px;position:relative}
-.nav-search input{width:100%;padding:8px 16px 8px 38px;border:1.5px solid var(--border);
-  border-radius:24px;font-size:13px;outline:none;background:var(--surface);font-family:inherit;
-  transition:border-color .15s}
-.nav-search input:focus{border-color:var(--blue);background:#fff}
-.nav-search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted)}
-.nav-cats{display:flex;gap:4px}
-.nav-cat{padding:5px 12px;border-radius:16px;border:none;background:transparent;
-  cursor:pointer;font-size:13px;font-weight:500;color:var(--sub);transition:all .12s}
-.nav-cat.on{background:var(--blue);color:#fff}
-.nav-cat:hover:not(.on){background:var(--surface);color:var(--text)}
-.nav-compare{margin-left:auto;padding:7px 16px;border-radius:8px;border:1.5px solid var(--border);
-  background:#fff;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;
-  transition:all .15s;white-space:nowrap}
-.nav-compare:hover{border-color:var(--blue);color:var(--blue)}
-.compare-badge{background:var(--blue);color:#fff;border-radius:10px;padding:1px 6px;font-size:11px}
+/* ─── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:20px 52px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(255,255,255,.15);backdrop-filter:blur(18px) saturate(200%);transition:all .3s}
+#nav.s{background:rgba(255,255,255,.85);box-shadow:0 1px 0 rgba(0,0,0,.06);padding:14px 52px}
+.logo{font-family:"Fraunces",serif;font-size:1.35rem;font-weight:800;color:var(--ink);letter-spacing:-.02em;text-decoration:none}
+.logo em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-pills{display:flex;gap:4px}
+.nc{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:all .15s}
+.nc:hover,.nc.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.nav-search{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.6);border:1px solid var(--line);border-radius:999px;padding:7px 16px}
+.nav-search input{border:none;background:none;outline:none;font-size:13px;font-family:"Inter",sans-serif;color:var(--ink);width:160px}
+.nav-search input::placeholder{color:var(--quiet);font-size:12px}
+.nav-cmp-btn{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;padding:8px 18px;border-radius:999px;background:var(--ink);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;gap:7px;transition:all .2s}
+.nav-cmp-btn:hover{background:var(--blue);transform:translateY(-1px)}
+.cmp-badge{background:var(--pink);color:#fff;border-radius:999px;padding:1px 7px;font-size:.65rem;font-weight:800}
 
-/* HERO */
-.hero{max-width:880px;margin:0 auto;padding:64px 32px 40px;text-align:center}
-.hero-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;
-  border-radius:20px;background:var(--green-bg);border:1px solid var(--green-light);
-  color:var(--green);font-size:12px;font-weight:600;margin-bottom:20px}
-.hero h1{font-size:clamp(32px,5vw,54px);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:18px}
-.hero h1 .accent{color:var(--blue)}
-.hero p{font-size:17px;color:var(--sub);line-height:1.7;max-width:560px;margin:0 auto 32px}
-.trust-bar{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
-.trust-item{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--sub)}
-.trust-item .dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
+/* ─── HERO (DARK) ── */
+.hero{min-height:100vh;background:var(--dark);display:flex;align-items:center;justify-content:center;padding:120px 52px 80px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 30%,rgba(79,70,229,.25) 0%,transparent 55%),radial-gradient(ellipse at 80% 70%,rgba(236,72,153,.18) 0%,transparent 55%),radial-gradient(ellipse at 60% 10%,rgba(14,165,233,.15) 0%,transparent 40%)}
+.hero-inner{max-width:1100px;width:100%;display:grid;grid-template-columns:1fr 360px;gap:80px;align-items:center;position:relative;z-index:1}
+.hero-kicker{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.hero-kicker span{display:inline-block;width:28px;height:2px;background:var(--grad)}
+h1{font-family:"Fraunces",serif;font-size:clamp(3rem,5.5vw,5.2rem);font-weight:800;line-height:.93;letter-spacing:-.025em;color:#fff;margin-bottom:24px}
+h1 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.55);line-height:1.7;max-width:460px;margin-bottom:36px;font-weight:400}
+.hero-sub strong{color:rgba(255,255,255,.85)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn-g{font-family:"JetBrains Mono",monospace;font-size:.78rem;font-weight:700;padding:13px 26px;border-radius:999px;cursor:pointer;border:none;letter-spacing:.03em;transition:all .25s}
+.btn-g.p{background:var(--grad);background-size:200%;color:#fff}
+.btn-g.p:hover{background-position:100%;transform:translateY(-2px);box-shadow:0 12px 28px rgba(79,70,229,.4)}
+.btn-g.s{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8)}
+.btn-g.s:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
 
-/* HOW IT WORKS */
-.how{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-     padding:48px 32px}
-.how-inner{max-width:800px;margin:0 auto}
-.how-title{text-align:center;font-size:14px;font-weight:700;text-transform:uppercase;
-  letter-spacing:1px;color:var(--muted);margin-bottom:32px}
-.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.how-step{text-align:center}
-.how-step .icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;
-  justify-content:center;font-size:22px;margin:0 auto 14px}
-.how-step h3{font-size:15px;font-weight:700;margin-bottom:6px}
-.how-step p{font-size:13px;color:var(--sub);line-height:1.6}
+/* hero stat card */
+.hcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:28px;backdrop-filter:blur(10px)}
+.hc-label{font-family:"JetBrains Mono",monospace;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.35);margin-bottom:8px}
+.hc-big{font-family:"Fraunces",serif;font-size:4.5rem;font-weight:800;line-height:.9;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px}
+.hc-big span{font-size:1.8rem;-webkit-text-fill-color:rgba(255,255,255,.3)}
+.hc-desc{font-size:12.5px;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:20px}
+.hc-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;border-top:1px solid rgba(255,255,255,.08);padding-top:16px}
+.hc-stat-n{font-family:"JetBrains Mono",monospace;font-size:1.1rem;font-weight:700;color:#fff;text-align:center}
+.hc-stat-l{font-size:11px;color:rgba(255,255,255,.3);text-align:center;margin-top:2px}
 
-/* SCORE EXPLAINER */
-.score-explainer{max-width:800px;margin:0 auto;padding:40px 32px}
-.se-title{font-size:22px;font-weight:800;margin-bottom:8px;letter-spacing:-.3px}
-.se-sub{color:var(--sub);font-size:14px;margin-bottom:24px}
-.se-bands{display:flex;gap:12px;flex-wrap:wrap}
-.se-band{flex:1;min-width:120px;padding:14px 16px;border-radius:12px;border:1.5px solid}
-.se-band-a{background:var(--green-bg);border-color:var(--green-light)}
-.se-band-b{background:#f0fdf4;border-color:#bbf7d0}
-.se-band-c{background:var(--yellow-bg);border-color:#fde68a}
-.se-band-d{background:var(--red-bg);border-color:var(--red-light)}
-.se-band .range{font-size:22px;font-weight:900}
-.se-band .label{font-size:12px;color:var(--sub);margin-top:2px}
-.se-band-a .range{color:var(--green)}
-.se-band-b .range{color:#16a34a}
-.se-band-c .range{color:var(--yellow)}
-.se-band-d .range{color:var(--red)}
+/* ─── SECTION BASE ── */
+.sec{padding:96px 52px;max-width:1200px;margin:0 auto}
+.sec-full{padding:96px 52px;width:100%}
+.sec-eye{font-family:"JetBrains Mono",monospace;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--violet);margin-bottom:6px}
+.sec-h{font-family:"Fraunces",serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin-bottom:8px}
+.sec-bar{width:48px;height:4px;border-radius:999px;background:var(--grad);margin-bottom:14px}
+.sec-header{display:grid;grid-template-columns:.38fr 1fr;gap:56px;align-items:start;margin-bottom:52px}
 
-/* FILTERS */
-.filters{border-top:1px solid var(--border);padding:14px 32px;
-  display:flex;align-items:center;gap:12px;background:#fff;position:sticky;top:60px;z-index:40}
-.f-count{font-size:13px;color:var(--muted);margin-left:auto}
-.sort-sel{padding:6px 10px;border:1.5px solid var(--border);border-radius:8px;
-  font-size:12px;font-family:inherit;cursor:pointer;outline:none;color:var(--text);background:#fff}
-.sort-sel:focus{border-color:var(--blue)}
+/* ─── THE GAP SECTION ── */
+.gap-outer{background:linear-gradient(135deg,#fdf2f8,#eff6ff);border:1px solid rgba(79,70,229,.15);border-radius:24px;overflow:hidden}
+.gap-label{font-family:"JetBrains Mono",monospace;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);padding:20px 32px 0}
+.gap-row{display:grid;grid-template-columns:1fr 1fr;padding:20px 32px 32px;gap:20px}
+.gap-col{border-radius:14px;padding:24px}
+.gap-ad{background:rgba(236,72,153,.06);border:1px solid rgba(236,72,153,.2)}
+.gap-real{background:rgba(79,70,229,.06);border:1px solid rgba(79,70,229,.2)}
+.gap-col h4{font-family:"JetBrains Mono",monospace;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
+.gap-ad h4{color:#be185d}
+.gap-real h4{color:var(--blue)}
+.gap-col li{list-style:none;font-size:13px;line-height:1.6;color:var(--sub);padding:7px 0;border-bottom:1px solid rgba(0,0,0,.05)}
+.gap-col li:last-child{border-bottom:none}
+.gap-col li b{color:var(--ink);font-weight:600}
 
-/* MARKETING VS REALITY */
-.mvr-banner{max-width:1200px;margin:0 auto 8px;padding:0 32px}
-.mvr-card{background:linear-gradient(135deg,#1e3a5f 0%,#1e293b 100%);
-  border-radius:16px;padding:24px 28px;color:#fff;overflow:hidden;position:relative}
-.mvr-card::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;
-  border-radius:50%;background:rgba(59,130,246,.15)}
-.mvr-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
-  color:#93c5fd;margin-bottom:12px}
-.mvr-title{font-size:18px;font-weight:800;margin-bottom:20px}
-.mvr-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.mvr-side{padding:14px 16px;border-radius:10px}
-.mvr-side h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
-.mvr-ad{background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3)}
-.mvr-ad h4{color:#fca5a5}
-.mvr-truth{background:rgba(5,150,105,.15);border:1px solid rgba(5,150,105,.3)}
-.mvr-truth h4{color:#6ee7b7}
-.mvr-items{list-style:none}
-.mvr-items li{font-size:13px;line-height:1.6;color:rgba(255,255,255,.85);
-  padding:4px 0 4px 18px;position:relative}
-.mvr-items li::before{position:absolute;left:0}
-.mvr-ad .mvr-items li::before{content:'📢'}
-.mvr-truth .mvr-items li::before{content:'📋'}
+/* ─── 5 TRUTHS (DARK) ── */
+.truths-outer{background:var(--dark);padding:96px 52px}
+.truths-inner{max-width:1200px;margin:0 auto}
+.truths-header{margin-bottom:56px}
+.truths-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.truth-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;transition:all .3s;cursor:default}
+.truth-card:hover{background:rgba(79,70,229,.12);border-color:rgba(79,70,229,.35);transform:translateY(-3px)}
+.tc-num{font-family:"JetBrains Mono",monospace;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.25);margin-bottom:14px}
+.tc-head{font-family:"Fraunces",serif;font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3}
+.tc-body{font-size:13px;color:rgba(255,255,255,.5);line-height:1.65}
+.tc-tag{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:999px;margin-bottom:12px}
+.tag-h{background:rgba(14,165,233,.15);color:#38bdf8}
+.tag-a{background:rgba(245,158,11,.15);color:#fbbf24}
+.tag-l{background:rgba(124,58,237,.15);color:#c4b5fd}
+.tag-acc{background:rgba(236,72,153,.15);color:#f9a8d4}
 
-/* GRID */
-.grid-wrap{max-width:1200px;margin:0 auto;padding:24px 32px 80px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px}
+/* ─── SCORE SECTION ── */
+.score-section{background:var(--paper)}
+.score-explain{max-width:560px}
+.score-explain p{font-size:15px;line-height:1.75;color:var(--sub)}
+.score-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:40px}
+.sc-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;transition:all .2s}
+.sc-card:hover{box-shadow:0 8px 24px rgba(79,70,229,.1);transform:translateY(-2px)}
+.sc-ring{width:64px;height:64px;border-radius:50%;border:3px solid;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 10px}
+.sc-ring.a{border-color:var(--green);color:var(--green)}
+.sc-ring.b{border-color:var(--blue);color:var(--blue)}
+.sc-ring.c{border-color:var(--gold);color:var(--gold)}
+.sc-ring.d{border-color:var(--pink);color:var(--pink)}
+.sc-n{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:.95rem;line-height:1}
+.sc-t{font-size:.5rem;font-family:"JetBrains Mono",monospace;opacity:.6;margin-top:2px}
+.sc-name{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.sc-ins{font-size:11.5px;color:var(--muted)}
 
-/* CARD */
-.card{background:#fff;border:1.5px solid var(--border);border-radius:16px;
-  overflow:hidden;transition:box-shadow .2s,border-color .2s;cursor:default}
-.card:hover{box-shadow:var(--shadow-lg);border-color:var(--blue)}
+/* ─── FILTERS + GRID ── */
+.filters-strip{background:rgba(248,249,252,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:10px 52px;display:flex;align-items:center;gap:14px;position:sticky;top:57px;z-index:100}
+.sort-sel{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:600;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);cursor:pointer;outline:none}
+.f-count{font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--muted);margin-left:auto}
 
-.card-top{padding:20px 20px 0}
-.card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
-.card-left{flex:1;margin-right:12px}
-.card-cat{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;
-  text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:6px;margin-bottom:7px}
-.cat-health{background:#dcfce7;color:#15803d}
-.cat-life{background:#dbeafe;color:#1d4ed8}
-.cat-auto{background:#fee2e2;color:#b91c1c}
-.cat-accident{background:#fef9c3;color:#854d0e}
-.card-name{font-size:15px;font-weight:700;line-height:1.3;letter-spacing:-.2px}
-.card-insurer{font-size:12px;color:var(--sub);margin-top:3px;display:flex;align-items:center;gap:5px}
-.verified-tick{width:14px;height:14px;background:var(--blue);border-radius:50%;
-  display:inline-flex;align-items:center;justify-content:center;font-size:8px;color:#fff}
+.grid-wrap{max-width:1200px;margin:0 auto;padding:28px 52px 80px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.no-res{grid-column:1/-1;padding:80px;text-align:center;color:var(--quiet);font-family:"JetBrains Mono",monospace;font-size:.8rem}
 
-/* POLICY SCORE */
+/* ─── POLICY CARD ── */
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(79,70,229,.1);border-color:rgba(79,70,229,.2)}
+.card-top{padding:18px 18px 0}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.card-left{flex:1;min-width:0}
+.cat-pill{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:3px 10px;border-radius:999px;margin-bottom:8px}
+.cat-health{background:rgba(14,165,233,.1);color:#0369a1}
+.cat-life{background:rgba(79,70,229,.1);color:var(--blue)}
+.cat-auto{background:rgba(245,158,11,.1);color:#b45309}
+.cat-accident{background:rgba(236,72,153,.1);color:#be185d}
+.card-name{font-family:"Fraunces",serif;font-size:.95rem;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:4px}
+.card-ins{font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.vtick{color:var(--green);font-weight:800;font-size:10px}
+.rev-count{color:var(--quiet)}
 .score-box{text-align:center;flex-shrink:0}
-.score-ring{width:68px;height:68px;border-radius:50%;border:3px solid;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:var(--surface)}
-.score-num{font-size:21px;font-weight:900;line-height:1}
-.score-txt{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--muted);margin-top:1px}
-.score-label{font-size:9px;color:var(--muted);margin-top:4px;text-align:center}
-.sg-a{border-color:var(--green);background:var(--green-bg)}.sg-a .score-num{color:var(--green)}
-.sg-b{border-color:#16a34a;background:#f0fdf4}.sg-b .score-num{color:#16a34a}
-.sg-c{border-color:var(--yellow);background:var(--yellow-bg)}.sg-c .score-num{color:var(--yellow)}
-.sg-d{border-color:var(--red);background:var(--red-bg)}.sg-d .score-num{color:var(--red)}
+.score-ring{width:58px;height:58px;border-radius:50%;border:2.5px solid;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 3px}
+.sg-a{border-color:var(--green);color:var(--green)}
+.sg-b{border-color:var(--blue);color:var(--blue)}
+.sg-c{border-color:var(--gold);color:var(--gold)}
+.sg-d{border-color:var(--pink);color:var(--pink)}
+.score-num{font-family:"JetBrains Mono",monospace;font-size:.9rem;font-weight:800;line-height:1}
+.score-txt{font-size:.5rem;opacity:.6;font-family:"JetBrains Mono",monospace;margin-top:2px}
+.score-label{font-size:.6rem;color:var(--muted);font-family:"JetBrains Mono",monospace}
+.metrics{display:grid;grid-template-columns:1fr 1fr 1fr;padding:10px 18px;margin-top:10px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper)}
+.metric{text-align:center}
+.metric-val{font-family:"JetBrains Mono",monospace;font-size:.82rem;font-weight:700}
+.metric-lab{font-size:.58rem;color:var(--quiet);font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.m-good{color:var(--green)}.m-ok{color:var(--gold)}.m-bad{color:var(--pink)}
+.card-body{padding:12px 18px 0;flex:1}
+.section-hd{font-family:"JetBrains Mono",monospace;font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);padding:8px 0 5px}
+.denial-hd{color:#be185d!important}
+.tc-list{list-style:none;display:flex;flex-direction:column;gap:3px;margin-bottom:6px}
+.tc-item{display:flex;gap:7px;align-items:flex-start;font-size:12px;color:var(--sub);line-height:1.5;padding:5px 7px;border-radius:7px}
+.tc-good{background:rgba(22,163,74,.04)}
+.tc-good .tc-icon{color:var(--green);font-weight:800;font-size:10px;min-width:12px;margin-top:2px}
+.tc-deny{background:rgba(236,72,153,.05);border-left:2.5px solid rgba(236,72,153,.4)}
+.tc-deny .tc-icon{color:#be185d;font-weight:900;font-size:11px;min-width:12px;font-family:"JetBrains Mono",monospace}
+.tc-ask{background:rgba(79,70,229,.04)}
+.tc-ask .tc-icon{color:var(--blue);font-weight:900;font-size:11px;min-width:12px;font-family:"JetBrains Mono",monospace}
+.wp-block{display:flex;flex-wrap:wrap;align-items:center;gap:5px;padding:4px 0}
+.wp-label{font-family:"JetBrains Mono",monospace;font-size:.6rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.wp-pill{background:rgba(245,158,11,.09);color:#b45309;border-radius:999px;padding:2px 9px;font-size:11px;border:1px solid rgba(245,158,11,.2);font-family:"JetBrains Mono",monospace;font-weight:600}
+.wp-red{background:rgba(236,72,153,.07);color:#be185d;border-color:rgba(236,72,153,.2)}
+.wp-orange{background:rgba(234,88,12,.07);color:#c2410c;border-color:rgba(234,88,12,.2)}
+.reviews-preview{padding:8px 18px;border-top:1px solid var(--line);margin-top:auto}
+.review-chip{padding:7px 0;border-bottom:1px solid var(--line)}
+.review-chip:last-child{border-bottom:none}
+.rc-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:3px}
+.rc-name{font-size:11.5px;font-weight:600;color:var(--ink)}
+.stars .star{font-size:10px}.stars .star.on{color:var(--gold)}.stars .star.off{color:var(--line)}
+.rc-outcome{font-size:10px;font-family:"JetBrains Mono",monospace;font-weight:700;padding:2px 7px;border-radius:999px}
+.outcome-approved{background:rgba(22,163,74,.09);color:var(--green)}
+.outcome-rejected{background:rgba(236,72,153,.09);color:#be185d}
+.outcome-partial{background:rgba(245,158,11,.09);color:#b45309}
+.outcome-not_claimed_yet{background:var(--paper);color:var(--muted)}
+.rc-verified{font-size:10px;font-weight:700;color:var(--green);font-family:"JetBrains Mono",monospace}
+.rc-text{font-size:11.5px;color:var(--muted);line-height:1.5}
+.card-actions{padding:12px 18px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:auto}
+.btn{font-family:"JetBrains Mono",monospace;font-size:.67rem;font-weight:700;padding:7px 13px;border-radius:999px;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--ink);transition:all .15s;letter-spacing:.02em;text-decoration:none;display:inline-flex;align-items:center}
+.btn:hover{border-color:var(--blue);color:var(--blue)}
+.btn-pdf{color:var(--blue);border-color:rgba(79,70,229,.25);background:rgba(79,70,229,.04)}
+.btn-buy{background:var(--green);color:#fff;border-color:var(--green);font-weight:700}
+.btn-buy:hover{background:#15803d;border-color:#15803d;color:#fff}
+.btn-cmp.selected{background:rgba(79,70,229,.08);border-color:var(--blue);color:var(--blue)}
 
-/* METRICS ROW */
-.metrics{display:flex;gap:1px;background:var(--border);border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);margin-top:14px}
-.metric{flex:1;padding:10px 12px;background:#fff;text-align:center}
-.metric:first-child{border-radius:0}
-.metric-val{font-size:14px;font-weight:800}
-.metric-lab{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;margin-top:2px}
-.m-good{color:var(--green)}
-.m-ok{color:var(--yellow)}
-.m-bad{color:var(--red)}
-
-/* T&C SECTIONS */
-.card-body{padding:14px 20px}
-.section-hd{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:700;
-  text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin:12px 0 6px}
-.section-hd .pill{display:inline-block;padding:1px 7px;border-radius:8px;font-size:9px}
-.pill-must{background:var(--blue-light);color:var(--blue)}
-.pill-truth{background:#f3e8ff;color:#7c3aed}
-.pill-excl{background:var(--red-light);color:var(--red)}
-
-.tc-list{list-style:none}
-.tc-item{display:flex;gap:8px;padding:4px 0;font-size:12px;color:var(--sub);line-height:1.5;
-  border-bottom:1px solid var(--surface)}
-.tc-item:last-child{border-bottom:none}
-.tc-icon{flex-shrink:0;font-size:13px;margin-top:1px}
-
-/* WAITING PERIOD VISUAL */
-.waiting-bar{background:var(--surface);border-radius:8px;padding:10px 12px;margin:8px 0;
-  font-size:12px;display:flex;align-items:center;gap:10px}
-.waiting-bar .icon{font-size:16px}
-.wp-text{flex:1}
-.wp-text strong{color:var(--yellow);font-weight:700}
-
-/* STARS */
-.stars{display:flex;gap:2px}
-.star{font-size:13px;cursor:pointer}
-.star.on{color:#f59e0b}
-.star.off{color:var(--border2)}
-.review-count{font-size:11px;color:var(--muted);margin-left:5px}
-
-/* REVIEWS PREVIEW */
-.reviews-preview{padding:0 20px 10px}
-.review-chip{background:var(--surface);border-radius:8px;padding:10px 12px;margin-bottom:6px;font-size:12px}
-.review-chip .rc-top{display:flex;align-items:center;gap:8px;margin-bottom:5px}
-.review-chip .rc-name{font-weight:600;font-size:12px}
-.review-chip .rc-outcome{font-size:10px;padding:2px 7px;border-radius:8px;font-weight:600}
-.outcome-approved{background:var(--green-light);color:var(--green)}
-.outcome-rejected{background:var(--red-light);color:var(--red)}
-.outcome-partial{background:#fef9c3;color:#854d0e}
-.review-chip .rc-text{color:var(--sub);line-height:1.5}
-.rc-verified{font-size:10px;color:var(--blue);display:flex;align-items:center;gap:3px}
-
-/* ACTIONS */
-.card-actions{padding:14px 20px;border-top:1px solid var(--border);
-  display:flex;gap:8px;align-items:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;
-  padding:9px 14px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;
-  border:none;text-decoration:none;transition:all .15s;font-family:inherit}
-.btn-pdf{background:var(--surface);border:1.5px solid var(--border);color:var(--sub);flex:1}
-.btn-pdf:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-bg)}
-.btn-buy{background:var(--green);color:#fff;flex:1.2}
-.btn-buy:hover{background:#047857}
-.btn-review{background:transparent;border:1.5px solid var(--border);color:var(--sub);padding:9px 10px}
-.btn-review:hover{border-color:var(--yellow);color:var(--yellow)}
-.btn-cmp{background:transparent;border:1.5px solid var(--border);color:var(--sub);padding:9px 10px;
-  font-size:12px}
-.btn-cmp.selected{background:var(--blue-bg);border-color:var(--blue);color:var(--blue)}
-.btn-cmp:hover:not(.selected){border-color:var(--blue);color:var(--blue)}
-
-/* WAITING PERIOD BLOCK */
-.wp-block{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 0;margin:4px 0 8px}
-.wp-label{font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-right:4px}
-.wp-pill{background:#fef9c3;color:#92400e;border-radius:20px;padding:3px 10px;font-size:12px;border:1px solid #fde68a}
-.wp-red{background:#fef2f2;color:#dc2626;border-color:#fecaca}
-.wp-orange{background:#fff7ed;color:#c2410c;border-color:#fed7aa}
-
-/* DENIAL WATCH */
-.denial-hd{color:#dc2626!important}
-.tc-deny{background:#fef2f2;border-radius:6px;padding:6px 8px;margin-bottom:4px;border-left:3px solid #dc2626}
-.tc-deny .tc-icon{color:#dc2626;font-weight:900;font-size:13px;min-width:16px;text-align:center}
-.tc-good .tc-icon{color:#059669;font-weight:900;font-size:13px}
-.tc-ask .tc-icon{color:#2563eb;font-weight:900;font-size:13px}
-
-/* CARD ACTIONS */
-.btn-review{font-size:12px;padding:8px 12px}
-
-/* COMPARE TABLE IMPROVEMENTS */
-.compare-table td{font-size:13px;vertical-align:top;padding:12px 14px;border-bottom:1px solid #f1f5f9;line-height:1.5}
-.compare-table thead th{background:#f8fafc;font-size:13px;padding:14px;border-bottom:2px solid #e2e8f0}
-.compare-table tr:last-child td{border-bottom:none}
-.compare-table tr:hover td{background:#f8fafc}
-
-/* MODAL CLOSE */
-.modal-close{background:none;border:none;cursor:pointer;color:#94a3b8;font-size:20px;padding:4px 8px;border-radius:6px;line-height:1}
-.modal-close:hover{color:#0f172a;background:#f1f5f9}
-
-/* COMPARE MODAL */
-.compare-modal{max-width:960px}
-.compare-modal .modal-head{padding:20px 24px 0;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9;padding-bottom:16px;margin-bottom:0}
-
-
-/* COMPARE BAR */
-.compare-bar{position:fixed;bottom:0;left:0;right:0;z-index:60;
-  background:#1e293b;padding:16px 32px;display:flex;align-items:center;gap:16px;
-  transform:translateY(100%);transition:transform .25s;border-top:1px solid #334155}
+/* ─── COMPARE BAR ── */
+.compare-bar{position:fixed;bottom:0;left:0;right:0;z-index:150;background:var(--ink);padding:14px 52px;display:flex;align-items:center;gap:14px;transform:translateY(100%);transition:transform .3s cubic-bezier(.16,1,.3,1);border-top:1px solid rgba(255,255,255,.08)}
 .compare-bar.show{transform:translateY(0)}
-.cbar-items{display:flex;gap:10px;flex:1}
-.cbar-item{background:#334155;border-radius:8px;padding:6px 12px;font-size:13px;color:#e2e8f0;
-  display:flex;align-items:center;gap:8px}
-.cbar-item button{background:none;border:none;color:#94a3b8;cursor:pointer;font-size:15px;line-height:1}
+.cbar-items{display:flex;gap:8px;flex:1}
+.cbar-item{background:rgba(255,255,255,.08);border-radius:8px;padding:5px 12px;font-size:12px;font-family:"JetBrains Mono",monospace;color:#e2e8f0;display:flex;align-items:center;gap:7px}
+.cbar-item button{background:none;border:none;color:#64748b;cursor:pointer;font-size:13px;line-height:1}
 .cbar-item button:hover{color:#f87171}
-.cbar-slot{background:#1e293b;border:1.5px dashed #334155;border-radius:8px;
-  padding:6px 20px;font-size:12px;color:#475569}
-.btn-compare-now{background:var(--blue);color:#fff;padding:10px 20px;border-radius:10px;
-  border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
-.btn-compare-now:disabled{opacity:.5;cursor:default}
-.cbar-clear{color:#64748b;background:none;border:none;cursor:pointer;font-size:12px;padding:8px}
+.cbar-slot{border:1.5px dashed rgba(255,255,255,.15);border-radius:8px;padding:5px 18px;font-size:11px;font-family:"JetBrains Mono",monospace;color:rgba(255,255,255,.25)}
+.btn-compare-now{font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:700;padding:10px 22px;border-radius:999px;border:none;cursor:pointer;background:var(--grad);background-size:200%;color:#fff;letter-spacing:.04em;transition:all .2s}
+.btn-compare-now:disabled{opacity:.35;cursor:default}
+.btn-compare-now:not(:disabled):hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(79,70,229,.4)}
+.cbar-clear{color:rgba(255,255,255,.3);background:none;border:none;cursor:pointer;font-size:11px;font-family:"JetBrains Mono",monospace;padding:8px}
+.cbar-clear:hover{color:rgba(255,255,255,.6)}
 
-/* MODALS */
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:70;
-  align-items:center;justify-content:center;padding:20px}
+/* ─── MODALS ── */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(10,10,18,.65);z-index:300;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px)}
 .modal-bg.open{display:flex}
-.modal{background:#fff;border-radius:20px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg)}
-
-/* REVIEW MODAL */
-.review-modal{max-width:480px}
-.modal-head{padding:24px 24px 0;display:flex;justify-content:space-between;align-items:flex-start}
-.modal-head h2{font-size:20px;font-weight:800;letter-spacing:-.3px}
-.modal-close{background:none;border:none;cursor:pointer;font-size:20px;color:var(--muted);
-  width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center}
-.modal-close:hover{background:var(--surface);color:var(--text)}
-.modal-body{padding:20px 24px 24px}
+.modal{background:#fff;border-radius:20px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+.modal-head{padding:24px 28px 16px;display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:1;border-radius:20px 20px 0 0}
+.modal-head h2{font-family:"Fraunces",serif;font-size:1.35rem;font-weight:800;color:var(--ink)}
+.modal-head p{font-size:12px;color:var(--muted);margin-top:2px}
+.modal-close{background:none;border:none;cursor:pointer;color:var(--quiet);font-size:18px;padding:6px 8px;border-radius:8px;line-height:1;transition:all .15s}
+.modal-close:hover{background:var(--paper);color:var(--ink)}
+.review-modal{max-width:460px}
+.modal-body{padding:22px 28px 28px}
+.verified-note{background:rgba(22,163,74,.06);border:1px solid rgba(22,163,74,.18);border-radius:10px;padding:11px 14px;font-size:12.5px;line-height:1.55;color:#166534;margin-bottom:18px}
 .form-group{margin-bottom:16px}
-.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
-.form-group .hint{font-size:11px;color:var(--muted);margin-bottom:6px}
-.form-input{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:9px;
-  font-size:14px;font-family:inherit;outline:none;transition:border-color .15s}
-.form-input:focus{border-color:var(--blue)}
-textarea.form-input{resize:vertical;min-height:90px}
-.star-select{display:flex;gap:6px;margin-top:4px}
-.star-select .s{font-size:28px;cursor:pointer;transition:transform .1s}
-.star-select .s:hover{transform:scale(1.2)}
-.star-select .s.on{color:#f59e0b}
-.star-select .s.off{color:#e2e8f0}
-.outcome-btns{display:flex;gap:8px;flex-wrap:wrap}
-.outcome-btn{padding:7px 14px;border-radius:8px;border:1.5px solid var(--border);
-  font-size:12px;font-weight:600;cursor:pointer;background:#fff;font-family:inherit;transition:all .12s}
-.outcome-btn.on{background:var(--blue-bg);border-color:var(--blue);color:var(--blue)}
-.verified-note{background:var(--blue-bg);border:1px solid var(--blue-light);border-radius:10px;
-  padding:12px;font-size:12px;color:var(--sub);line-height:1.6;margin-bottom:16px}
-.verified-note strong{color:var(--blue)}
-.btn-submit{width:100%;padding:12px;background:var(--blue);color:#fff;border:none;
-  border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
-.btn-submit:hover{background:#1d4ed8}
+.form-group label{display:block;font-family:"JetBrains Mono",monospace;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--sub);margin-bottom:5px}
+.hint{font-size:11px;color:var(--muted);margin-bottom:5px}
+.form-input{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13.5px;font-family:"Inter",sans-serif;color:var(--ink);outline:none;transition:border-color .15s;background:#fff}
+.form-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(79,70,229,.09)}
+textarea.form-input{resize:vertical;min-height:78px}
+.star-select{display:flex;gap:5px;margin-top:4px}
+.star-select .s{font-size:22px;cursor:pointer;transition:transform .1s;line-height:1}
+.star-select .s.on{color:var(--gold)}.star-select .s.off{color:var(--line)}
+.star-select .s:hover{transform:scale(1.15)}
+.outcome-btns{display:flex;gap:7px;flex-wrap:wrap;margin-top:6px}
+.outcome-btn{font-family:"JetBrains Mono",monospace;font-size:.67rem;font-weight:700;padding:7px 15px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;transition:all .15s}
+.outcome-btn.on{border-color:var(--blue);background:rgba(79,70,229,.07);color:var(--blue)}
+.btn-submit{width:100%;font-family:"JetBrains Mono",monospace;font-size:.78rem;font-weight:700;padding:13px;border-radius:999px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--blue),var(--violet));color:#fff;letter-spacing:.04em;transition:all .2s;margin-top:8px}
+.btn-submit:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(79,70,229,.3)}
+.compare-modal{max-width:960px}
+.compare-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.compare-table th{background:linear-gradient(135deg,var(--blue),var(--violet));color:#fff;padding:13px 15px;text-align:left;font-family:"JetBrains Mono",monospace;font-size:.68rem;font-weight:700;letter-spacing:.06em;position:sticky;top:0}
+.compare-table th:first-child{width:150px;text-transform:uppercase;letter-spacing:.1em}
+.compare-table td{padding:13px 15px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:hover td{background:var(--paper)}
+.row-label{font-family:"JetBrains Mono",monospace;font-size:.67rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.ct-good{color:var(--green);font-weight:700}.ct-bad{color:#be185d;font-weight:700}
 
-/* COMPARE MODAL */
-.compare-modal{max-width:900px}
-.compare-table{width:100%;border-collapse:collapse;font-size:13px}
-.compare-table th{background:var(--surface);padding:12px 16px;text-align:left;
-  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
-.compare-table td{padding:12px 16px;border-top:1px solid var(--border);vertical-align:top}
-.compare-table tr:hover td{background:#fafafa}
-.compare-table .row-label{font-weight:600;color:var(--text);white-space:nowrap;width:160px}
-.ct-good{color:var(--green);font-weight:600}
-.ct-bad{color:var(--red);font-weight:600}
-.ct-warn{color:var(--yellow);font-weight:600}
-.cmp-hdr{padding:20px 24px 0;display:flex;justify-content:space-between;align-items:center}
-.cmp-hdr h2{font-size:20px;font-weight:800}
-.cmp-names{display:grid;grid-template-columns:160px repeat(auto-fill,1fr);background:var(--blue);color:#fff;border-radius:12px 12px 0 0}
-.cmp-name-cell{padding:14px 16px}
-.cmp-name-cell h3{font-size:14px;font-weight:700;line-height:1.3}
-.cmp-name-cell p{font-size:11px;opacity:.8;margin-top:2px}
-.cmp-score{font-size:26px;font-weight:900;margin-top:4px}
+/* ─── PROMISE (DARK) ── */
+.promise-outer{background:var(--dark2);padding:80px 52px}
+.promise-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.promise-left h2{font-family:"Fraunces",serif;font-size:2.5rem;font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.02em;margin-bottom:16px}
+.promise-left h2 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.promise-left p{font-size:14px;color:rgba(255,255,255,.45);line-height:1.7;max-width:400px}
+.promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.promise-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px}
+.promise-card-n{font-family:"JetBrains Mono",monospace;font-size:1.4rem;font-weight:700;margin-bottom:4px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.promise-card-t{font-size:13px;font-weight:600;color:#fff;margin-bottom:4px}
+.promise-card-d{font-size:12px;color:rgba(255,255,255,.35);line-height:1.5}
 
-/* NO RESULTS */
-.no-res{text-align:center;padding:80px 32px;color:var(--muted)}
-.no-res p{font-size:15px}
+/* ─── FOOTER ── */
+footer{background:var(--dark);color:rgba(255,255,255,.3);padding:40px 52px;border-top:1px solid rgba(255,255,255,.05)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:800;color:rgba(255,255,255,.6)}
+.footer-logo em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:600;color:rgba(255,255,255,.3);text-decoration:none;transition:color .15s}
+.footer-links a:hover{color:rgba(255,255,255,.7)}
+.footer-copy{width:100%;font-family:"JetBrains Mono",monospace;font-size:.65rem;color:rgba(255,255,255,.2);text-align:center;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);margin-top:8px}
 
-/* FOOTER */
-footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 32px}
-.footer-inner{max-width:1200px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;margin-bottom:32px}
-.footer-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
-  color:var(--sub);margin-bottom:12px}
-.footer-col ul{list-style:none}
-.footer-col ul li{font-size:13px;color:var(--muted);padding:3px 0;line-height:1.6}
-.footer-col ul li strong{color:var(--sub)}
-.footer-bottom{font-size:12px;color:var(--muted);border-top:1px solid var(--border);
-  padding-top:20px;line-height:1.8}
+/* ─── REVEAL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-up{opacity:0;transform:translateY(20px);transition:opacity .5s .1s cubic-bezier(.16,1,.3,1),transform .5s .1s cubic-bezier(.16,1,.3,1)}
+.reveal-up.in{opacity:1;transform:translateY(0)}
+.stagger>*{opacity:0;transform:translateY(24px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+.stagger.in>*:nth-child(1){opacity:1;transform:none;transition-delay:.05s}
+.stagger.in>*:nth-child(2){opacity:1;transform:none;transition-delay:.15s}
+.stagger.in>*:nth-child(3){opacity:1;transform:none;transition-delay:.25s}
+.stagger.in>*:nth-child(4){opacity:1;transform:none;transition-delay:.35s}
+.stagger.in>*:nth-child(5){opacity:1;transform:none;transition-delay:.45s}
 
-@media(max-width:640px){
-  nav{padding:0 16px;gap:10px}
-  .nav-cats{display:none}
-  .hero{padding:40px 16px 28px}
-  .filters{padding:10px 16px}
-  .grid-wrap{padding:16px 16px 100px}
-  .grid{grid-template-columns:1fr}
-  .mvr-row{grid-template-columns:1fr}
-  .how-steps{grid-template-columns:1fr}
-  .compare-bar{padding:12px 16px}
+/* ─── RESPONSIVE ── */
+@media(max-width:980px){
+  #nav{padding:14px 20px}#nav.s{padding:10px 20px}.nav-search{display:none}
+  .hero{padding:110px 20px 60px}.hero-inner{grid-template-columns:1fr;gap:40px}.hcard{max-width:360px}
+  .sec{padding:60px 20px}.sec-full{padding:60px 20px}.sec-header{grid-template-columns:1fr}
+  .gap-row{grid-template-columns:1fr}
+  .truths-outer{padding:60px 20px}
+  .promise-outer{padding:60px 20px}.promise-inner{grid-template-columns:1fr}
+  .filters-strip{padding:10px 20px}.grid-wrap{padding:20px 20px 60px}
+  .compare-bar{padding:12px 20px}
+  footer{padding:32px 20px}.footer-inner{flex-direction:column;gap:12px;text-align:center}
 }
+@media(max-width:600px){.grid{grid-template-columns:1fr}.hero-inner{gap:28px}#nav{position:static}.filters-strip{position:static;top:auto}}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="logo">Pol<span class="dot">truth</span></div>
-  <div class="nav-search">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="text" placeholder="Search policies or insurers..." id="search">
+<nav id="nav">
+  <a class="logo" href="#">Pol<em>truth</em></a>
+  <div class="nav-right">
+    <div class="nav-search">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="search" placeholder="Search policies…">
+    </div>
+    <div class="nav-pills">
+      <button class="nc on" data-cat="all">All</button>
+      <button class="nc" data-cat="health">Health</button>
+      <button class="nc" data-cat="life">Life</button>
+      <button class="nc" data-cat="auto">Auto</button>
+    </div>
+    <button class="nav-cmp-btn" id="compare-btn">Compare <span class="cmp-badge" id="compare-count">0</span></button>
   </div>
-  <div class="nav-cats">
-    <button class="nav-cat on" data-cat="all">All</button>
-    <button class="nav-cat" data-cat="health">Health</button>
-    <button class="nav-cat" data-cat="life">Life</button>
-    <button class="nav-cat" data-cat="auto">Auto</button>
-  </div>
-  <button class="nav-compare" id="compare-btn">
-    Compare <span class="compare-badge" id="compare-count">0</span>
-  </button>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-chip">
-    ✓ No broker · No commission · Policy document only
-  </div>
-  <h1>India's insurance truth.<br>Not the <span class="accent">ad</span>.</h1>
-  <p>We read every policy document so you don't have to. See what's actually covered, what gets rejected at claim time, and how each insurer actually performs.</p>
-  <div class="trust-bar">
-    <span class="trust-item"><span class="dot"></span><strong id="h-total">259</strong> policies analyzed</span>
-    <span class="trust-item"><span class="dot"></span><strong>29</strong> IRDAI-registered insurers</span>
-    <span class="trust-item"><span class="dot"></span>Direct PDF links from insurer websites</span>
-    <span class="trust-item"><span class="dot"></span>Buy direct. Zero commission.</span>
-  </div>
-</div>
-
-<!-- HOW IT WORKS -->
-<div class="how">
-  <div class="how-inner">
-    <div class="how-title">How Poltruth works</div>
-    <div class="how-steps">
-      <div class="how-step">
-        <div class="icon" style="background:#eff6ff">📄</div>
-        <h3>We read the policy PDF</h3>
-        <p>Every policy document is scraped directly from the insurer's official website. That 80-page document nobody reads? We read it.</p>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-kicker"><span></span> India · No commission · Policy document only</div>
+      <h1>We read the policy.<br><em>You didn't have to.</em></h1>
+      <p class="hero-sub">Every insurer hides the real terms on page 40. We found them. <strong>Compare by actual claim rates. Buy direct. Zero middleman.</strong></p>
+      <div class="hero-cta">
+        <button class="btn-g p" onclick="document.getElementById('browse').scrollIntoView({behavior:'smooth'})">Browse all <span id="h-total">259</span> policies →</button>
+        <button class="btn-g s" onclick="document.getElementById('truth-section').scrollIntoView({behavior:'smooth'})">See what they hide</button>
       </div>
-      <div class="how-step">
-        <div class="icon" style="background:#f0fdf4">🔍</div>
-        <h3>We find what actually matters</h3>
-        <p>What's covered, what's rejected, waiting periods, sub-limits, co-pay clauses — the 10 things that decide your claim outcome.</p>
-      </div>
-      <div class="how-step">
-        <div class="icon" style="background:#fef9c3">⚡</div>
-        <h3>You decide. Buy direct.</h3>
-        <p>Compare by real claim rates, not ads. Click Buy Direct — you go straight to the insurer. No middleman. No commission. Exact same price.</p>
+    </div>
+    <div class="hcard">
+      <div class="hc-label">Policies analyzed</div>
+      <div class="hc-big">259<span>/259</span></div>
+      <div class="hc-desc">Real PDFs from 29 IRDAI-registered insurers. Not brochures. Not marketing copy. The actual policy wording.</div>
+      <div class="hc-stats">
+        <div><div class="hc-stat-n">29</div><div class="hc-stat-l">Insurers</div></div>
+        <div><div class="hc-stat-n">4</div><div class="hc-stat-l">Categories</div></div>
+        <div><div class="hc-stat-n">₹0</div><div class="hc-stat-l">Commission</div></div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- MARKETING VS REALITY -->
-<div class="mvr-banner">
-  <div style="padding:32px 0 12px">
-    <div style="font-size:20px;font-weight:800;letter-spacing:-.3px;margin-bottom:4px">Marketing vs Reality</div>
-    <div style="font-size:14px;color:var(--sub)">What insurers advertise vs what the policy document actually says</div>
+<!-- THE GAP -->
+<div class="sec reveal" id="gap-section">
+  <div class="sec-header">
+    <div>
+      <div class="sec-bar"></div>
+      <div class="sec-eye">01 / The Gap</div>
+    </div>
+    <h2 class="sec-h">What they say vs. what page 12 says.</h2>
   </div>
-  <div class="mvr-card">
-    <div class="mvr-label">⚠ Real examples from policy documents</div>
-    <div class="mvr-title">Health Insurance: What they say vs what you sign</div>
-    <div class="mvr-row">
-      <div class="mvr-side mvr-ad">
-        <h4>📢 Marketing says</h4>
-        <ul class="mvr-items">
-          <li>₹10 Lakh comprehensive coverage</li>
-          <li>Cashless at 10,000+ hospitals</li>
-          <li>Day 1 coverage, no waiting</li>
+  <div class="gap-outer">
+    <div class="gap-label">Real example — health insurance</div>
+    <div class="gap-row">
+      <div class="gap-col gap-ad">
+        <h4>📢 The ad</h4>
+        <ul>
+          <li><b>₹10 Lakh</b> comprehensive coverage</li>
+          <li>Cashless at <b>10,000+ hospitals</b></li>
+          <li><b>Day 1</b> coverage, no waiting</li>
           <li>All diseases covered</li>
         </ul>
       </div>
-      <div class="mvr-side mvr-truth">
-        <h4>📋 Policy document says</h4>
-        <ul class="mvr-items">
-          <li>₹10L total — but cataract max ₹40K, joint replacement max ₹1.5L (sub-limits)</li>
-          <li>Cashless only at network hospitals. Non-network? You pay, then claim. Takes 30-90 days.</li>
-          <li>30-day waiting period. Pre-existing conditions: 2-4 years. Some diseases: 1-2 years.</li>
-          <li>Exclusions include: self-inflicted, cosmetic, dental, fertility, obesity, AIDS, war, nuclear</li>
+      <div class="gap-col gap-real">
+        <h4>📋 Page 12 of the policy</h4>
+        <ul>
+          <li>₹10L total — but <b>cataract max ₹40K</b>, joint replacement max ₹1.5L (sub-limits, page 34)</li>
+          <li>Cashless only at <b>network hospitals</b>. Non-network: you pay first, claim in 30–90 days.</li>
+          <li><b>30-day wait</b>. Pre-existing conditions: <b>2–4 years</b>. Some diseases: 1–2 years.</li>
+          <li>15 exclusions incl. <b>dental, fertility, cosmetic, obesity</b>, and anything self-inflicted.</li>
         </ul>
       </div>
     </div>
   </div>
 </div>
 
-<!-- FILTERS -->
-<div class="filters">
-  <select class="sort-sel" id="sort">
-    <option value="csr">Sort: PolicyScore ↓</option>
-    <option value="complaints">Sort: Fewer Complaints</option>
-    <option value="solvency">Sort: Solvency Ratio</option>
-    <option value="name">Sort: Name A–Z</option>
-  </select>
-  <span class="f-count" id="f-count"></span>
+<!-- 5 TRUTHS (DARK) -->
+<div class="truths-outer" id="truth-section">
+  <div class="truths-inner">
+    <div class="truths-header reveal">
+      <div class="sec-bar"></div>
+      <div class="sec-eye" style="color:rgba(255,255,255,.35)">02 / The truths no one tells you</div>
+      <h2 class="sec-h" style="color:#fff;max-width:600px">5 things buried in policy documents that decide your claim.</h2>
+    </div>
+    <div class="truths-grid stagger">
+      <div class="truth-card">
+        <div class="tc-tag tag-h">Health</div>
+        <div class="tc-num">01 / Room Rent Trap</div>
+        <div class="tc-head">One room upgrade. Bills cut everywhere.</div>
+        <div class="tc-body">Booked a ₹6K/day room. Policy says ₹3K limit. Insurer cuts room rent AND applies proportional reduction on doctor fees, ICU, medicines — everything. Not just the room.</div>
+      </div>
+      <div class="truth-card">
+        <div class="tc-tag tag-a">Auto</div>
+        <div class="tc-num">02 / Flood Engine Trick</div>
+        <div class="tc-head">You drove. Engine died. Not covered.</div>
+        <div class="tc-body">Drove through a waterlogged road. Engine seized. That's "consequential loss" — not covered. Only the flood damage before you moved is covered. Every monsoon, thousands claim this and lose.</div>
+      </div>
+      <div class="truth-card">
+        <div class="tc-tag tag-h">Health</div>
+        <div class="tc-num">03 / The 24-Hour Trap</div>
+        <div class="tc-head">Called the hospital. Forgot the insurer.</div>
+        <div class="tc-body">You must notify the insurer within 24–48 hours of hospitalisation. Emergency at 2 AM, phone dead, family panicking — doesn't matter. Miss this window = procedural rejection. Thousands of valid claims denied this way.</div>
+      </div>
+      <div class="truth-card">
+        <div class="tc-tag tag-l">Life</div>
+        <div class="tc-num">04 / The Non-Disclosure Void</div>
+        <div class="tc-head">Forgot to mention blood pressure. Policy voided.</div>
+        <div class="tc-body">Didn't disclose diabetes or blood pressure in the proposal? After death, insurer investigates medical history and can void the entire policy — even after 10 years of regular premium payments.</div>
+      </div>
+      <div class="truth-card">
+        <div class="tc-tag tag-a">Auto</div>
+        <div class="tc-num">05 / The NCB Math</div>
+        <div class="tc-head">One small claim. Five years of bonus gone.</div>
+        <div class="tc-body">One claim resets your No Claim Bonus (up to 50% discount) back to zero. A ₹8K repair? You lose a ₹12K annual discount. Often better to pay from pocket than claim.</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- GRID -->
-<div class="grid-wrap">
-  <div class="grid" id="grid"></div>
-  <div class="no-res" id="no-res" style="display:none"><p>No policies found. Try adjusting your search.</p></div>
+<!-- POLICYSCORE -->
+<div class="sec-full score-section">
+  <div class="sec reveal" style="padding-left:0;padding-right:0">
+    <div class="sec-header">
+      <div>
+        <div class="sec-bar"></div>
+        <div class="sec-eye">03 / PolicyScore</div>
+      </div>
+      <div>
+        <h2 class="sec-h">The only number that matters.</h2>
+        <div class="score-explain">
+          <p>Claim Settlement Ratio (CSR) from <strong>IRDAI Annual Report 2023–24</strong>. The % of claims each insurer actually paid. This is the CIBIL score of insurance — it tells you if they'll pay when you need them to.</p>
+        </div>
+        <div class="score-cards stagger">
+          <div class="sc-card"><div class="sc-ring a"><div class="sc-n">99</div><div class="sc-t">Score</div></div><div class="sc-name">Max Life</div><div class="sc-ins">99.65% claims paid</div></div>
+          <div class="sc-card"><div class="sc-ring a"><div class="sc-n">99</div><div class="sc-t">Score</div></div><div class="sc-name">HDFC Life</div><div class="sc-ins">99.36% claims paid</div></div>
+          <div class="sc-card"><div class="sc-ring b"><div class="sc-n">97</div><div class="sc-t">Score</div></div><div class="sc-name">Star Health</div><div class="sc-ins">97.8% claims paid</div></div>
+          <div class="sc-card"><div class="sc-ring b"><div class="sc-n">96</div><div class="sc-t">Score</div></div><div class="sc-name">Go Digit</div><div class="sc-ins">96.2% claims paid</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BROWSE -->
+<div id="browse">
+  <div class="filters-strip">
+    <select class="sort-sel" id="sort">
+      <option value="csr">PolicyScore ↓</option>
+      <option value="complaints">Fewer Complaints</option>
+      <option value="solvency">Solvency Ratio</option>
+      <option value="name">Name A–Z</option>
+    </select>
+    <span class="f-count" id="f-count"></span>
+  </div>
+  <div class="grid-wrap">
+    <div class="grid" id="grid"></div>
+    <div class="no-res" id="no-res" style="display:none"><p>No policies found.</p></div>
+  </div>
+</div>
+
+<!-- PROMISE (DARK) -->
+<div class="promise-outer reveal">
+  <div class="promise-inner">
+    <div class="promise-left">
+      <h2>Built on <em>truth</em>.<br>Not commission.</h2>
+      <p>Every insurer comparison platform in India earns commission when you buy. We don't. No hidden incentives. No sponsored rankings. The highest PolicyScore is always ranked first, period.</p>
+    </div>
+    <div class="promise-grid">
+      <div class="promise-card"><div class="promise-card-n">₹0</div><div class="promise-card-t">Commission</div><div class="promise-card-d">We earn zero on your purchase. Buy direct from insurer.</div></div>
+      <div class="promise-card"><div class="promise-card-n">100%</div><div class="promise-card-t">Policy-first</div><div class="promise-card-d">Rankings based on IRDAI claim data, not paid listing.</div></div>
+      <div class="promise-card"><div class="promise-card-n">SHA-256</div><div class="promise-card-t">Verified Reviews</div><div class="promise-card-d">Only real policyholders. Policy number hashed, never stored.</div></div>
+      <div class="promise-card"><div class="promise-card-n">IRDAI</div><div class="promise-card-t">Data source</div><div class="promise-card-d">Annual Report 2023–24. Official government data.</div></div>
+    </div>
+  </div>
 </div>
 
 <!-- COMPARE BAR -->
@@ -472,59 +479,20 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:40px
 </div>
 
 <!-- REVIEW MODAL -->
-<div class="modal-bg" id="review-modal-bg" onclick="closeIfBg(event,'review-modal-bg')">
+<div class="modal-bg" id="review-modal-bg">
   <div class="modal review-modal">
     <div class="modal-head">
-      <div>
-        <h2>Write a Review</h2>
-        <p style="font-size:13px;color:var(--sub);margin-top:4px" id="rm-policy-name"></p>
-      </div>
+      <div><h2>Write a Review</h2><p id="rm-policy-name"></p></div>
       <button class="modal-close" onclick="closeModal('review-modal-bg')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="verified-note">
-        <strong>✓ Verified reviews only.</strong> Enter your policy number (we hash it — never stored in plain text). Only real policyholders can review. This is what makes our reviews real.
-      </div>
-      <div class="form-group">
-        <label>Your policy number (kept private)</label>
-        <div class="hint">We convert this to a hash. Your actual number is never stored.</div>
-        <input class="form-input" type="text" id="rm-polno" placeholder="e.g. 1234567890">
-      </div>
-      <div class="form-group">
-        <label>Overall rating</label>
-        <div class="star-select" id="rm-stars">
-          <span class="s off" data-v="1">★</span>
-          <span class="s off" data-v="2">★</span>
-          <span class="s off" data-v="3">★</span>
-          <span class="s off" data-v="4">★</span>
-          <span class="s off" data-v="5">★</span>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Did you make a claim?</label>
-        <div class="outcome-btns" id="rm-claim-btns">
-          <button class="outcome-btn" data-v="yes">Yes, I claimed</button>
-          <button class="outcome-btn" data-v="no">Not yet</button>
-        </div>
-      </div>
-      <div id="rm-outcome-wrap" style="display:none">
-        <div class="form-group">
-          <label>What happened?</label>
-          <div class="outcome-btns" id="rm-outcome-btns">
-            <button class="outcome-btn" data-v="approved">✓ Approved fully</button>
-            <button class="outcome-btn" data-v="partial">⚠ Partial</button>
-            <button class="outcome-btn" data-v="rejected">✗ Rejected</button>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Your experience <span style="color:var(--muted)">(min 30 chars)</span></label>
-        <textarea class="form-input" id="rm-text" placeholder="What happened when you needed to use this policy? What surprised you — good or bad?"></textarea>
-      </div>
-      <div class="form-group">
-        <label>Your name <span style="color:var(--muted)">(optional)</span></label>
-        <input class="form-input" type="text" id="rm-name" placeholder="Anonymous">
-      </div>
+      <div class="verified-note"><strong>✓ Verified reviews only.</strong> We hash your policy number with SHA-256 — the original is never stored. Only real policyholders can review.</div>
+      <div class="form-group"><label>Your policy number</label><div class="hint">Hashed client-side. Never stored.</div><input class="form-input" type="text" id="rm-polno" placeholder="e.g. 1234567890"></div>
+      <div class="form-group"><label>Overall rating</label><div class="star-select" id="rm-stars"><span class="s off" data-v="1">★</span><span class="s off" data-v="2">★</span><span class="s off" data-v="3">★</span><span class="s off" data-v="4">★</span><span class="s off" data-v="5">★</span></div></div>
+      <div class="form-group"><label>Did you claim?</label><div class="outcome-btns" id="rm-claim-btns"><button class="outcome-btn" data-v="yes">Yes, I claimed</button><button class="outcome-btn" data-v="no">Not yet</button></div></div>
+      <div id="rm-outcome-wrap" style="display:none"><div class="form-group"><label>What happened?</label><div class="outcome-btns" id="rm-outcome-btns"><button class="outcome-btn" data-v="approved">✓ Approved</button><button class="outcome-btn" data-v="partial">⚠ Partial</button><button class="outcome-btn" data-v="rejected">✗ Rejected</button></div></div></div>
+      <div class="form-group"><label>Your experience <span style="font-weight:400;text-transform:none;letter-spacing:0;font-family:Inter,sans-serif;font-size:11px">(min 30 chars)</span></label><textarea class="form-input" id="rm-text" placeholder="What happened when you needed to use this policy?"></textarea></div>
+      <div class="form-group"><label>Name <span style="font-weight:400;text-transform:none;letter-spacing:0;font-family:Inter,sans-serif;font-size:11px">(optional)</span></label><input class="form-input" type="text" id="rm-name" placeholder="Anonymous"></div>
       <button class="btn-submit" onclick="submitReview()">Submit Verified Review →</button>
     </div>
   </div>
@@ -534,65 +502,38 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:40px
 <div class="modal-bg" id="compare-modal-bg">
   <div class="modal compare-modal">
     <div class="modal-head">
-      <div>
-        <h2 style="font-size:18px;font-weight:800">Side-by-side comparison</h2>
-        <p style="font-size:12px;color:#64748b;margin-top:2px">What actually matters when you claim</p>
-      </div>
+      <div><h2>Side-by-side comparison</h2><p>What actually matters when you claim</p></div>
       <button class="modal-close" onclick="closeModal('compare-modal-bg')">✕</button>
     </div>
-    <div id="compare-content" style="padding:0 24px 24px;overflow-x:auto"></div>
+    <div id="compare-content" style="padding:0 28px 28px;overflow-x:auto"></div>
   </div>
 </div>
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>PolicyScore</h4>
-        <ul>
-          <li><strong>98-100</strong> — Exceptional (pays almost all claims)</li>
-          <li><strong>95-97</strong> — Very Good</li>
-          <li><strong>90-94</strong> — Good</li>
-          <li><strong>Below 90</strong> — Needs scrutiny</li>
-          <li>Source: IRDAI Annual Report 2023-24</li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Hidden T&C that matter most</h4>
-        <ul>
-          <li>Room rent sub-limits (health)</li>
-          <li>Co-payment clause (health)</li>
-          <li>Depreciation schedule (auto)</li>
-          <li>Pre-existing disease waiting (health)</li>
-          <li>Claim intimation time window</li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Our promise</h4>
-        <ul>
-          <li>No broker fees. Ever.</li>
-          <li>No sponsored rankings</li>
-          <li>Only verified buyer reviews</li>
-          <li>Direct links to IRDAI-registered insurers</li>
-          <li>Policy documents updated from insurer sites</li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>India first. World next.</h4>
-        <ul>
-          <li>29 IRDAI-registered insurers</li>
-          <li>259 policy documents analyzed</li>
-          <li>Health · Life · Auto · Accident</li>
-          <li>Built for every Indian</li>
-          <li>Free forever for buyers</li>
-        </ul>
-      </div>
+    <div class="footer-logo">Pol<em>truth</em></div>
+    <div class="footer-links">
+      <a href="https://github.com/originaonxi/insurance-research" target="_blank">GitHub</a>
+      <a href="https://irdai.gov.in" target="_blank">IRDAI</a>
+      <a href="#browse">Browse Policies</a>
     </div>
-    <div class="footer-bottom">
-      Data from IRDAI Annual Report 2023-24. Policy PDFs linked directly from official insurer websites. Poltruth is an information platform — we do not sell insurance. All purchases made directly with IRDAI-registered insurers. Reviews from verified policyholders only.
-    </div>
+    <div class="footer-copy">Data from IRDAI Annual Report 2023–24. Policy PDFs from official insurer websites. Poltruth is an information platform — we do not sell insurance. Purchases made directly with IRDAI-registered insurers. Reviews from verified policyholders only.</div>
   </div>
 </footer>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('s',window.scrollY>24));
+
+// Intersection reveal
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal,.stagger,.reveal-up').forEach(el=>io.observe(el));
+
+// Modal bg click close
+['review-modal-bg','compare-modal-bg'].forEach(id=>{
+  document.getElementById(id).addEventListener('click',function(e){if(e.target===this)closeModal(id);});
+});
+</script>
 
 <script>
 // ─── STATE ───────────────────────────────────────────────────────
